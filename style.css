@@ -1,11 +1,11 @@
 @media screen and (min-width: 600px) {
   #main-title {
-    
+    text-align: center;
   }
 }
 
 @media screen and (max-width: 600px) {
   #main-title {
-    
+    text-align: left;
   }
 }
