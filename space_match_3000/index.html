@@ -4,14 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Space Match 3000</title>
-
-    <!-- Load custom style sheet -->
     <link rel="stylesheet" type="text/css" href="theme/love.css">
   </head>
   <body>
     <center>
-      <div>
-        <h1>Space Match 3000</h1>
+      <div id="game">
         <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
         <canvas id="loadingCanvas" oncontextmenu="event.preventDefault()" width="800" height="600"></canvas>
       </div>
@@ -86,8 +83,5 @@
     </script>
     <script type="text/javascript" src="game.js"></script>
     <script async type="text/javascript" src="love.js" onload="applicationLoad(this)"></script>
-    <footer>
-      <p>Built with <a href="https://github.com/TannerRogalsky/love.js">love.js</a></p>
-    </footer>
   </body>
 </html>
