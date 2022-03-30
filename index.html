@@ -16,6 +16,7 @@
   <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="https://latex.now.sh/style.css" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 
 
@@ -23,8 +24,7 @@
 
   <header>
     <h2 class="author">Steven Deutekom</h2>
-    <img src="images/me.jpg" alt="Steven smiling"
-         style="display: block; margin-right: auto; margin-left: auto; width: 30%;" />
+    <img class="img-head" src="images/me.jpg" alt="Steven smiling" />
   </header>
 
 
@@ -36,6 +36,7 @@
   </div>
 
 
+  <!-- ----------------------------------------------------------------- -->
   <nav role="navigation" class="toc">
     <h2 id="contents">Contents</h2>
     <hr>
@@ -51,6 +52,7 @@
   <main>
   <article>
 
+    <!-- ----------------------------------------------------------------- -->
     <h2 id="projects">Projects</h2>
     <hr>
 
@@ -59,56 +61,53 @@
 
 
     <h3 id="space-match">Space Match 3000</h3>
-
-    <p>Space Match is a very simple match 3 game.
-    This is the first project I ever fully completed. It was really exciting to have
-    something that looked like a real program, albiet a simple one. I finished it
-    before I had decided to do a CS program full time and the fun I had was a big
-    part of my decision.</p>
-
-    <p><img src="images/space_match.jpg" alt="space match gameplay"></p>
-
-    <p>I learned the lua programming language and how to work with
-    a framework/library using love2d. I also learned that a programs architecture
-    is a tricky and important part of the process. It is often easy to make things
-    work, not as easy to do it in a way that makes building and extending the
-    app pleasant. For this particular project I learned about the state pattern and
-    used a simple vesion off it to split up game states into self contained logical
-    units. Of course, I still barely new what I was doing so the code code is still
-    not as clean as it could be.</p>
-
-    <p>The project can be found on my GitHub here (add link). To see it in action a
-    version converted for the web can be played here (add link).
-    <strong>Note</strong> that the UI is a bit
-    clumsy. Menus are navigated with the keyboard by pressing keys in brackets. I.e.
-    <code>(n)ew game</code> is activated with <code>n</code>. However, during the game the mouse is used
-    to select blocks to swap. It was not built with the web in mind so things like
-    the high score don&rsquo;t really work.</p>
+    <div class="img-preview-row">
+      <div class="img-preview-col end">
+        <img src="/images/space-match-main-menu.png" alt="space match main menu">
+      </div>
+      <div class="img-preview-col">
+        <img src="/images/space-match.png" alt="space match ">
+      </div>
+      <div class="img-preview-col end">
+        <img src="/images/space-match-rough-paused.png" alt="space match gameplay">
+      </div>
+    </div>
+    <p>Space Match 3000 is the first <i>finished</i> project that I made.
+    It is a simple match 3 game made with Love2D.</p>
+    <p><a href="/projects/space-match.html">Read More</a></p>
 
 
-    <h2 id="about">More About Me</h2>
+    <!-- ----------------------------------------------------------------- -->
+    <h2 id="education">Education</h2>
     <hr>
-      <p>I love programming!</p>
-
-      <p>Better add more to make sure everyone knows I am not a robot 😉</p>
-
-
-    <h3 id="education">Education</h3>
     <p>List Education</p>
 
 
-    <h3 id="experience">Work Experience</h3>
+    <!-- ----------------------------------------------------------------- -->
+    <h2 id="experience">Work Experience</h2>
+    <hr>
     <p>List work experience</p>
 
+
+    <!-- ----------------------------------------------------------------- -->
+    <h2 id="about">More About Me</h2>
+    <hr>
+    <p>I love programming!</p>
+
+    <p>Better add more to make sure everyone knows I am not a robot 😉</p>
+
+    <h3>Contact</h3>
+    <a href="mailto:deutekom@ulet.ca">deutekom@uleth.ca</a>
 
   </article>
   </main>
 
-
+ 
+  <!-- ----------------------------------------------------------------- -->
   <footer>
     <div>
-      <br><br>
-      <section><hr>Contact me at <a href="mailto:deutekom@ulet.ca">deutekom@uleth.ca</a></section>
+      <br>
+      <hr>
       <section class="copyright">© Steven Deutekom 2021</section>
       <section>Styled with <a href="https://latex.now.sh/">latex.css</a></section>
     </div>
