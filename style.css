@@ -5,6 +5,13 @@
   width: 30%;
 }
 
+.middle {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+}
+
 .img-preview-col {
   float: left;
   width: 33.33%;
@@ -21,6 +28,7 @@
   .img-head {
     width: 70%
   }
+
   .img-preview-col {
     width: 100%;
   }
