@@ -1,33 +1,23 @@
 {:paths ["bb"]
  :tasks
 
- {:requires ([clojure.string :as str])
-  :enter    (println (str/capitalize (:name (current-task)))
-                     "--"
-                     (:doc (current-task)))
+ {:requires ([clojure.string :as str]
+             [babashka.process :as ps]
+             [babashka.fs :as fs])
+  :enter    (println (str/capitalize (:name (current-task))))
 
-  clean       {:doc "Remove build artifacts"
-               :task (println "not-implemented")}
-  build-main  {:doc "Build the main home page"
-               :task (println "not-implemented")}
-  build-md    {:doc "Compile markdown files to html and copy to pages"
-               :task (println "not-implemented")}
-  build-all   {:doc "Build all and copy to pages"
-               :depends [build-md]
+  clean       {:doc "Remove build artifacts."
+               :task (do (println "removing build...")
+                         (fs/delete-tree "build"))}
+
+  build-html  {:doc "Compile html files and copy them to pages directory.
+                     Will replace any existing files in pages and will not
+                     remove any that are no longer in src."
+               ;; TODO see if you can set a namespace on the build script
+               ;; and import it and call a function instead? Will require
+               ;; putting the contents into a function.
+               :task (ps/shell "bb" "bb/compile-html.bb")}
+
+  build-all   {:doc "Build all and copy to pages."
+               :depends [clean build-html]
                :task (println "not-implemented")}}}
-
-;; Build Ideas ;;
-;;
-;; I think that the build process goes something like this:
-;; - for each html file in a folder
-;; - walk it's html
-;; - if a substitution tag is found
-;; - html recurse and substitute text, md pandoc to html and substitute text
-;; - pass along a set of filenames so we do not go in circles
-;; - place the new file in a build folder
-;;
-;; We could also check the build folder for markdown and html files to avoid
-;; processing them twice. They will need names to make it obvious where they
-;; belong. Possibly we could structure the pages folder as just a collection
-;; of html and forget using folders? or build will need to create them.
-

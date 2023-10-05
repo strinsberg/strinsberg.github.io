@@ -14,24 +14,37 @@
 ;;   repeatedly replacing without writing to pages until there are no placeholders
 ;;   left, but it adds complexity that I do not need yet.
 
+;; TODO only print on -v. (denf verbln [& args] (when verbose (apply println args)))
+;; TODO try to identify common issues that will arise and either kill the
+;;      script with a message or wrap things in try catch blocks to recover
+;;      or abort the process.
+
 ;; Vars and helper functions
 
 (def src-dir "src")
 (def build-dir "build")
 (def pages-dir "pages")
-(def re-file-template #"<!--\*\* ([-_/a-zA-Z0-9]+\.[a-zA-Z]+) \*\*-->")
+;; TODO make sure this will work if there are a different number of spaces
+;; between the comment chars and the filename.
+(def re-file-template #"<!--\*\* +([-_/a-zA-Z0-9]+\.[a-zA-Z]+) +\*\*-->")
 
+(defn remove-src-dir [path]
+  (str/replace (str path) (str src-dir fs/file-separator) ""))
+
+;; TODO remove src-dir from start
 (defn md-build-path-str [path]
-  (str "build"
+  (str build-dir
        fs/file-separator
-       (fs/strip-ext (str path))
+       (fs/strip-ext (remove-src-dir path))
        ".html"))
 
+;; TODO remove src-dir from start
 (defn pages-build-path-str [path]
-  (str "pages"
+  (str pages-dir
        fs/file-separator
-       (str path)))
+       (remove-src-dir path)))
 
+;; TODO check that path has extension
 (defn create-parents [path]
   (->> (str path)
        fs/components
@@ -41,37 +54,53 @@
 
 ;; Compile all files to markdown
 
+(println "markdown to html:")
+
 (run!
  ;; Compile each markdown file into the build dir as html
  (fn [path]
-   (create-parents path)
-   (pr/shell "pandoc" "-t" "html" "-o" (md-build-path-str path) (str path)))
+   (let [target-path (md-build-path-str path)]
+     (println " " (str path) "->" target-path)
+     (create-parents target-path)
+     (pr/shell "pandoc" "-t" "html" "-o" target-path (str path))))
  ;; Find all markdown files
  (fs/glob src-dir "**.md"))
 
 ;; Load snippets
 
+(println "loading snippets...")
+
 (def snippets
   (reduce
-   (fn [path acc]
-     (assoc acc (str path) (slurp path)))
+   (fn [acc path]
+     (assoc acc (remove-src-dir path) (slurp (str path))))
+   {}
    (fs/glob src-dir (str "**snippets" fs/file-separator "*.html"))))
 
 ;; Expand html files
+
+(println "expanding html:")
 
 (run!
  ;; For each html file replace placeholders with file contents 
  ;; and write the new file into the pages dir
  (fn [path]
    (let [target-path (pages-build-path-str path)]
+     (println " " (str path) "->" target-path)
      (create-parents target-path)
+     ;; TODO error when placeholder source does not exist
      (spit target-path
+           ;; TODO extract this replacement stuff into a function?
            (str/replace
-            (slurp path)
+            (slurp (str path))
             re-file-template
             (fn [match]
-              (slurp (md-build-path-str (str (nth match 1)))))))))
-;; Collect all html files excluding snippets
+              (let [match-path (str (second match))]
+                (println "    expand:" match-path)
+                (if (contains? snippets match-path)
+                  (get snippets match-path)
+                  (slurp (md-build-path-str match-path)))))))))
+ ;; Collect all html files excluding snippets
  (filter
-  (fn [path] (not (contains? snippets path)))
+  (fn [path] (not (contains? snippets (remove-src-dir path))))
   (fs/glob src-dir "**.html")))
