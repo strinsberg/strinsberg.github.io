@@ -1,4 +1,5 @@
-{:tasks
+{:paths ["bb"]
+ :tasks
 
  {:requires ([clojure.string :as str])
   :enter    (println (str/capitalize (:name (current-task)))
