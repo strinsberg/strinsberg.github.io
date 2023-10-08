@@ -1,0 +1,6 @@
+<script type="application/x-scittle">
+  (defn my-alert []
+   (js/alert "You clicked!"))
+  ;; export function to use from JavaScript:
+  (set! (.-my_alert js/window) my-alert)
+</script>

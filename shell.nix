@@ -2,8 +2,9 @@
 
 pkgs.mkShell {
   buildInputs = with pkgs.buildPackages; [
-    babashka
-    pandoc
+    babashka # for tasks and scripts
+    pandoc # for converting markdown to html
+    httplz # serve the pages locally for testing
   ];
 }
 

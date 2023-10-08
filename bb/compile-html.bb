@@ -56,6 +56,7 @@
 
 (println "markdown to html:")
 
+;; TODO filter out README.md from source folders
 (run!
  ;; Compile each markdown file into the build dir as html
  (fn [path]
