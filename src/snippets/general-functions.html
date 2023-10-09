@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="https://latex.now.sh/style.css">
-<link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js" type="application/javascript"></script>
-
-  <script type="application/x-scittle">
+<script type="application/x-scittle">
   (defn local-storage? []
     (let [test 'test']
       (try
@@ -39,27 +28,3 @@
   (set! (.-toggle_dark_mode js/window) toggle-dark-mode)
   (set! (.-set_mode js/window) set-mode)
 </script>
-
-  <title>Steven's Homepage</title>
-</head>
-
-<body onload="set_mode()">
-  <h1 id="strinsbergs-homepage">Strinsberg’s Homepage</h1>
-<div class="abstract">
-<p>some text about this page</p>
-</div>
-<h2
-id="navigation">Navigation<button class="mode-button" onclick="toggle_dark_mode()">🌗</button></h2>
-<p><a href="/portfolio.html">Portfolio</a></p>
-
-  <div>
-  <br>
-  <hr>
-  © Steven Deutekom 2023
-  <br>
-  Styled with <a href="https://latex.now.sh/">latex.css</a>
-</div>
-
-</body>
-
-</html>

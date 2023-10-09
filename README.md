@@ -14,7 +14,11 @@ code. We will see.
 # Ideas
 
 For the moment the most important thing is to get some representation of the
-work I have done over the past 5 years.
+work I have done over the past 5 years. Maybe, the page that is my portfolio
+should not be the home page, just the page I send along with resumes. Then I could
+construct a more personal and fun homepage that could link to various things
+as I add more stuff. People looking to hire me can access this page, but it
+does not have to be the first thing they see.
 
 I want a project section on the main page. It needs to showcase more important
 and possibly impressive projects first. These should have a short blurb about

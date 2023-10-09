@@ -21,9 +21,12 @@
                ;; putting the contents into a function.
                :task (ps/shell "bb" "bb/compile-html.bb")}
 
+  build-css   {:doc "Copy css files to pages"
+               :task (shell "cp -r src/css pages/")}
+
   build-all   {:doc "Build all and copy to pages."
-               :depends [clean build-html]
-               :task (println "not-implemented")}}}
+               :depends [clean build-html build-css]
+               :task (println "*** Pages Built Succesfully ***")}}}
 
 ;; TODO add a task to start a bb-nrepl and to kill it, possibly even one
 ;;      to leave the nix-shell that will clean up everything that one
