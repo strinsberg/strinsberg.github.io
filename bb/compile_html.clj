@@ -15,9 +15,11 @@
 ;;   of their files and writing the new file to the pages-dir.
 
 ;; Placehoders must be of the form <!--** filename.ext **-->
-;; Markdown files should only have snippet placeholdes. Current expansions will
-;;   not guarantee that expansions of markdown files will happen in the right
-;;   order if the expanded file includes markdown files that also require expansion.
+;; Markdown files should only have snippet placeholders. Those snippets can be
+;;   either html or md. They should not be md files that are not considered
+;;   snippets. I.e. no snippets, md or html, should include placeholders. They
+;;   will either be ignored or not resolve in the right order if a placeholder
+;;   file also includes placeholders.
 ;; Html snippets cannot have placeholders. If they do those placeholders will be ignored.
 ;; Html file placeholders should only refer to markdown or snippets for the
 ;;   same reason as markdown files referencing other markdown files.
