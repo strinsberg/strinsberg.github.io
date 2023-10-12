@@ -25,6 +25,9 @@
 ;; TODO try to identify common issues that will arise and either kill the
 ;;      script with a message or wrap things in try catch blocks to recover
 ;;      or abort the process.
+;; TODO while verbose output can be used to see that a snippet file path was
+;;      not found and no substitution took place, we should error when finding
+;;      a placeholder with a non-existent file.
 
 ;; Vars ;;;;;;;;;;;;;;;
 
@@ -32,12 +35,12 @@
 (def src-dir "src")
 (def build-dir "build")
 (def pages-dir "pages")
-;; TODO make sure this will work if there are a different number of spaces
-;; between the comment chars and the filename.
-(def re-file-template #"<!--\*\* +([-_/a-zA-Z0-9]+\.[a-zA-Z]+) +\*\*-->")
+(def re-file-template #"<!--\*\* *([-_/a-zA-Z0-9]+\.[a-zA-Z]+) *\*\*-->")
 
 ;; Helpers ;;;;;;;;;;;;;
 
+;; Remove a dir from a path
+;; E.g. remove src dir/src/file.md -> dir/file.md
 (defn remove-dir [path dir]
   (str/replace (str path) (str dir fs/file-separator) ""))
 
@@ -46,15 +49,15 @@
 (defn md-build-path-str [path]
   (str build-dir
        fs/file-separator
-       (fs/strip-ext (remove-dir src-dir path))
+       (fs/strip-ext (remove-dir path src-dir))
        ".html"))
 
 ;; Create a path for an expanded html file from
 ;; src/path/to/file or build/path/to/file -> pages/path/to/file
 (defn pages-path-str [path]
-  (let [trimmed (->> path
-                     (remove-dir src-dir)
-                     (remove-dir build-dir))]
+  (let [trimmed (-> path
+                    (remove-dir src-dir)
+                    (remove-dir build-dir))]
     (str pages-dir
          fs/file-separator
          trimmed)))
@@ -64,7 +67,7 @@
 (defn dest-path-str [path dest src]
   (str dest
        fs/file-separator
-       (remove-dir src path)))
+       (remove-dir path src)))
 
 ;; TODO check that path has extension
 ;; Create the parent directories for a pile path if they do not exist.
@@ -87,7 +90,7 @@
   (-print "loading snippets...")
   (reduce
    (fn [acc path]
-     (assoc acc (remove-dir src-dir path) (slurp (str path))))
+     (assoc acc (remove-dir path src-dir) (slurp (str path))))
    {}
    (fs/glob src-dir (str "**snippets" fs/file-separator "*.html"))))
 
@@ -129,13 +132,13 @@
        (spit target-path (expand-html path snippets))))
    ;; Find all html files in src dir.
    (filter
-    (fn [path] (not (contains? snippets (remove-dir src path))))
+    (fn [path] (not (contains? snippets (remove-dir path src))))
     (fs/glob src "**.html"))))
 
 ;; Main ;;;;;;;;;;;;;;;;;;
 
 ;; Main function to run the script
-(defn -main [cli-args]
+(defn -main [& cli-args]
   (let [args (cli/parse-opts cli-args {:spec {:verbose {:coerce :boolean}}})]
     (when (:verbose args)
       (swap! verbose not))
@@ -145,4 +148,4 @@
       (-print "expanding compiled markdown:")
       (expand-all build-dir build-dir snippets)
       (-print "expanding html:")
-      (expand-all src-dir build-dir snippets))))
+      (expand-all src-dir pages-dir snippets))))

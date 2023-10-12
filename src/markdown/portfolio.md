@@ -4,7 +4,7 @@
   some text about this page
 </div>
 
-<!--** snippets/navigation **-->
+<!--**    snippets/navigation.html**-->
 
 
 ## Masters Work
