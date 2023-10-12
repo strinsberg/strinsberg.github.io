@@ -16,10 +16,7 @@
   build-html  {:doc "Compile html files and copy them to pages directory.
                      Will replace any existing files in pages and will not
                      remove any that are no longer in src."
-               ;; TODO see if you can set a namespace on the build script
-               ;; and import it and call a function instead? Will require
-               ;; putting the contents into a function.
-               :task (ps/shell "bb" "bb/compile-html.bb")}
+               :task compile-html/-main}
 
   build-css   {:doc "Copy css files to pages"
                :task (shell "cp -r src/css pages/")}
