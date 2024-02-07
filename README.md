@@ -54,4 +54,4 @@ may also be nested snippet dirs, but only if absolutely necessary.
 The build process will find all html template files and expand them to contain
 any additions they need. Markdown files will be converted so their html can
 be inserted into the templates. Snippets will be inserted verbatim. Each
-expanded file will be placed into pages replacing previous copies.
+expanded file will be placed into docs replacing previous copies.
