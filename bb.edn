@@ -1,29 +1,27 @@
 {:paths ["bb"]
  :tasks
 
- {:requires ([clojure.string :as str]
-             [babashka.process :as ps]
-             [babashka.fs :as fs])
-  :enter    (println (str/capitalize (:name (current-task))))
+ {:requires
+  ([clojure.string :as str] [babashka.process :as ps] [babashka.fs :as fs])
+  :enter (println (str/capitalize (:name (current-task))))
 
-  clean       {:doc "Remove build artifacts."
-               :task (do (println "removing build...")
-                         (fs/delete-tree "build"))}
+  clean {:doc "Remove build artifacts."
+         :task (do (println "removing build...") (fs/delete-tree "build"))}
 
-  serve       {:doc "Start a server in pages."
-               :task (shell "httplz -p 8080 pages")}
+  serve {:doc "Start a server in docs." :task (shell "httplz -p 8080 docs")}
 
-  build-html  {:doc "Compile html files and copy them to pages directory.
-                     Will replace any existing files in pages and will not
+  build-html
+  {:doc
+   "Compile html files and copy them to docs directory.
+                     Will replace any existing files in docs and will not
                      remove any that are no longer in src."
-               :task compile-html/-main}
+   :task compile-html/-main}
 
-  build-css   {:doc "Copy css files to pages"
-               :task (shell "cp -r src/css pages/")}
+  build-css {:doc "Copy css files to docs" :task (shell "cp -r src/css docs/")}
 
-  build-all   {:doc "Build all and copy to pages."
-               :depends [clean build-html build-css]
-               :task (println "*** Pages Built Succesfully ***")}}}
+  build-all {:doc "Build all and copy to docs."
+             :depends [clean build-html build-css]
+             :task (println "*** Pages Built Succesfully ***")}}}
 
 ;; TODO add a task to start a bb-nrepl and to kill it, possibly even one
 ;;      to leave the nix-shell that will clean up everything that one
