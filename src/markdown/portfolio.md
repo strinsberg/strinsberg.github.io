@@ -24,12 +24,12 @@ My other formal work experience came over two summers during my Bachelor's degre
 
 [GitHub](https://github.com/strinsberg/Program-Wars)
 
-[Play the game](https://program-wars.firebaseapp.com)
+[Play The Game](https://program-wars.firebaseapp.com)
 
 
 ### Sociolinguistics Research Data Collection
 
-[GitHub](https://github.com/slrg_data)
+[GitHub](https://github.com/strinsberg/slrg_data)
 
 
 ## Personal Projects
@@ -52,15 +52,17 @@ In the end though all of my projects are only for fun and personal learning. I a
 
 [GitHub](https://github.com/strinsberg/my-scheme)
 
-[Web Demo](/)
+*Web Demo Coming Soon* <!--[Try It](/)-->
 
-[Original School Project GitHub](/)
+[Original School Project GitHub](https://github.com/strinsberg/scheme-interpreter)
 
 #### Lt-64 VM
 
 [GitHub](https://github.com/strinsberg/lt64)
 
 [Assembler GitHub](https://github.com/strinsberg/lt64-asm)
+
+[Ltsp GitHub](https://github.com/strinsberg/ltsp)
 
 #### Pascal Subset Compiler
 
@@ -103,7 +105,7 @@ Like everyone that has learned to program I have made a few video games. I find 
 
 [GitHub](https://github.com/strinsberg/space-match-3000)
 
-[Online Demo](/space-match-demo)
+[Play The Game](https://strinsberg.github.io/space-match-3000/)
 
 
 ### Others
