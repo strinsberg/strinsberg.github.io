@@ -1,3 +1,16 @@
+.mode-button {
+  cursor: pointer;
+  border: 0px solid rgb(0,0,0,0);
+  background-color: transparent;
+  float: right;
+}
+
+.bigger {
+  font-size: 125%;
+}
+
+
+/* Old Stuff for Image thumbnails */
 .img-head {
   display: block;
   margin-right: auto;

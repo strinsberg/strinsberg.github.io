@@ -1,0 +1,38 @@
+{:paths ["bb"]
+ :tasks
+
+ {:requires ([clojure.string :as str]
+             [babashka.process :as ps]
+             [babashka.fs :as fs])
+  :enter    (println (str/capitalize (:name (current-task))))
+
+  clean       {:doc "Remove build artifacts."
+               :task (do (println "removing build...")
+                         (fs/delete-tree "build"))}
+
+  serve       {:doc "Start a server in pages."
+               :task (shell "httplz -p 8080 pages")}
+
+  build-html  {:doc "Compile html files and copy them to pages directory.
+                     Will replace any existing files in pages and will not
+                     remove any that are no longer in src."
+               :task compile-html/-main}
+
+  build-css   {:doc "Copy css files to pages"
+               :task (shell "cp -r src/css pages/")}
+
+  build-all   {:doc "Build all and copy to pages."
+               :depends [clean build-html build-css]
+               :task (println "*** Pages Built Succesfully ***")}}}
+
+;; TODO add a task to start a bb-nrepl and to kill it, possibly even one
+;;      to leave the nix-shell that will clean up everything that one
+;;      might have running before exiting, if nix shell wont do this for me.
+;; TODO add a task to serve the webpage. At the start with just html it will
+;;      probably work to just open the page and click around, but once there
+;;      is any kind of js/wasm we will need to serve it with a web server.
+;;      would be nice to have hot reload if any of the files change, or at
+;;      least a reload task for when things that wont refresh change. Obviously,
+;;      if larger js/coljure frameworks are used that require more complex
+;;      building and such we may prefer to stay inside one of their folders
+;;      and use their tools for watching and serving those parts of the project.

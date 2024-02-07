@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js" type="application/javascript"></script>
+
+  <script type="application/x-scittle">
+  (defn local-storage? []
+    (let [test 'test']
+      (try
+       (.setItem js/localStorage test test)
+       (.removeItem js/localStorage test)
+       true
+       (catch js/Error e false))))
+
+  (defn toggle-dark-mode []
+   (when (local-storage?)
+      (let [dark (.getItem js/localStorage "dark")]
+        (if (or (nil? dark) (identical? dark "off"))
+          (do
+           (.setItem js/localStorage "dark" "on")
+           (.add js/document.body.classList "latex-dark"))
+          (do
+           (.setItem js/localStorage "dark" "off")
+           (.remove js/document.body.classList "latex-dark"))))))
+
+  (defn set-mode []
+   (when (local-storage?)
+      (let [dark (.getItem js/localStorage "dark")]
+        (when (and (not (nil? dark)) (identical? dark "on"))
+           (.add js/document.body.classList "latex-dark")))))
+
+  ;; export functions to use from JavaScript
+  (set! (.-toggle_dark_mode js/window) toggle-dark-mode)
+  (set! (.-set_mode js/window) set-mode)
+</script>
+
+  <title>Strinsberg's Portfolio</title>
+</head>
+
+<body onload="set_mode()">
+  <h1 id="strinsbergs-portfolio">Strinsberg’s Portfolio</h1>
+<div class="abstract">
+<p>This is a collection of my work and personal projects. It is a litte
+unfinished at the moment. I will add more descriptions, screenshots, and
+fix links to online demos for applicable projects.</p>
+</div>
+<h2
+id="navigation">Navigation<button class="mode-button" onclick="toggle_dark_mode()">🌗</button></h2>
+<ol type="1">
+<li><a href="/">Home</a></li>
+<li><a href="/portfolio.html">Portfolio</a></li>
+</ol>
+
+<h2 id="work-experience">Work Experience</h2>
+<p>Given that I have changed careers and gone back to school in my 30s,
+I do not have a lot of work experience yet. My Master’s degree has been
+the better part of three years of work. While much of the work was
+self-directed it was paid for with funding and scholarships from the
+University of Lethbridge and my supervisors. So, I treated it as much as
+a full time job as was possible.</p>
+<p>My other formal work experience came over two summers during my
+Bachelor’s degree at the University of Lethbridge. Both of these jobs
+were assisting with research projects as a programmer.</p>
+<h3 id="masters-work">Masters Work</h3>
+<p><a href="https://hdl.handle.net/10133/6638">Thesis</a></p>
+<p><em>GitHub Link Coming Soon</em>
+<!--[Github](https://github.com/strinsberg/masters)--></p>
+<h3 id="program-wars">Program Wars</h3>
+<p><a href="https://github.com/strinsberg/Program-Wars">GitHub</a></p>
+<p><a href="https://program-wars.firebaseapp.com">Play The Game</a></p>
+<h3 id="sociolinguistics-research-data-collection">Sociolinguistics
+Research Data Collection</h3>
+<p><a href="https://github.com/strinsberg/slrg_data">GitHub</a></p>
+<h2 id="personal-projects">Personal Projects</h2>
+<p>Since discovering computer programming I have built a lot of things
+for fun and learning. I have listed many of them below. Some are more
+finished than others and a few are school projects or extensions of
+school projects. A few of them are even somewhat useful 😁.</p>
+<h3 id="interpreters-compilers-and-vms">Interpreters, Compilers, and
+VMs</h3>
+<p>If there is one computer science topic I love the most it is
+programming languages and their implementations. The simple fact that I
+can give the computer instructions is pretty amazing, but combine that
+with all the abstractions and paradigms that can be added on top of
+those simple instructions. As a result I have spent a fair amount of
+time implementing and adjusting programming languages.</p>
+<p>I really enjoy Lisp-like languages and this is where many of my
+personal attempts at interpreters and compilers have been focused.
+Lisp-like languages are also slightly more straightforward to parse,
+which can make them easier to get started with. With that simplicity
+comes a lot of power though and a lot of room for fun or practical
+extensions.</p>
+<p>In the end though all of my projects are only for fun and personal
+learning. I am sure it is possible to make an efficient, full-featured,
+and robust programming language on my own, but it is not really
+practical. There are so many amazing languages out there that many
+people have spent many years refining. So, each of my projects have only
+been taken so far.</p>
+<h4 id="rusp">Rusp</h4>
+<p><a href="https://github.com/strinsberg/rusp">GitHub</a></p>
+<h4 id="scheme">Scheme</h4>
+<p><a href="https://github.com/strinsberg/my-scheme">GitHub</a></p>
+<p><em>Web Demo Coming Soon</em> <!--[Try It](/)--></p>
+<p><a href="https://github.com/strinsberg/scheme-interpreter">Original
+School Project GitHub</a></p>
+<h4 id="lt-64-vm">Lt-64 VM</h4>
+<p><a href="https://github.com/strinsberg/lt64">GitHub</a></p>
+<p><a href="https://github.com/strinsberg/lt64-asm">Assembler
+GitHub</a></p>
+<p><a href="https://github.com/strinsberg/ltsp">Ltsp GitHub</a></p>
+<h4 id="pascal-subset-compiler">Pascal Subset Compiler</h4>
+<p><a href="https://github.com/strinsberg/plcc">GitHub</a></p>
+<p><a href="https://github.com/strinsberg/pl_compiler">Original School
+Project GitHub</a></p>
+<h3 id="command-line-tools">Command Line Tools</h3>
+<p>I have also made a few command line programs and tools over the years
+to help me accomplish a task or just to learn something and practice
+programming. I don’t often have a need that cannot be met by an existing
+project, but it is fun to be able to build something useful.</p>
+<h4 id="easy-mark">Easy Mark</h4>
+<p><a href="https://github.com/strinsberg/easy-mark">GitHub</a></p>
+<h4 id="clint-cli-integration-testing">Clint (cli integration
+testing)</h4>
+<p><a href="https://github.com/strinsberg/clint">GitHub</a></p>
+<h4 id="hockey-stats-viewer">Hockey Stats Viewer</h4>
+<p><a href="https://github.com/strinsberg/hockey-stats">GitHub</a></p>
+<h4 id="simple-text">Simple Text</h4>
+<p><a href="https://github.com/strinsberg/simple-text">GitHub</a></p>
+<h3 id="games-and-game-engines">Games And Game Engines</h3>
+<p>Like everyone that has learned to program I have made a few video
+games. I find I am generally more interested in creating the games
+architecture and algorithms than I am in writing a compelling and fun
+video game. As a result I have not really spent that much time making
+video games. Below are two projects that I put the most time and effort
+into.</p>
+<h4 id="dgsl">DGSL</h4>
+<p><a
+href="https://github.com/strinsberg/dgsl-text-adventure-engine">Engine
+GitHub</a></p>
+<p><a href="https://github.com/strinsberg/dgsl-world-editor">World
+Builder GitHub</a></p>
+<p><a href="https://github.com/strinsberg/good-ship-lethbridge">Original
+School Project GitHub</a></p>
+<h4 id="space-match-3000">Space Match 3000</h4>
+<p><a
+href="https://github.com/strinsberg/space-match-3000">GitHub</a></p>
+<p><a href="https://strinsberg.github.io/space-match-3000/">Play The
+Game</a></p>
+<h3 id="others">Others</h3>
+<p>Finally, some other projects that I have worked on over the years.
+These include some of my competitive programming solutions and some
+other school projects.</p>
+<h4 id="competitive-programming">Competitive Programming</h4>
+<p><a
+href="https://github.com/strinsberg/competitive-programming">GitHub</a></p>
+<h4 id="issue-tracker-rest-api">Issue Tracker Rest API</h4>
+<p><a
+href="https://github.com/strinsberg/tracker-express">GitHub</a></p>
+<h4 id="command-line-card-games">Command Line Card Games</h4>
+<p><a href="https://github.com/strinsberg/card-game-extravaganza">Rummy
+Extension GitHub</a></p>
+<p><a href="https://github.com/strinsberg/old-maid">Old Maid
+GitHub</a></p>
+
+  <div>
+  <br>
+  <hr>
+  © Steven Deutekom 2023
+  <br>
+  Styled with <a href="https://latex.now.sh/">latex.css</a>
+</div>
+
+</body>
+
+</html>
