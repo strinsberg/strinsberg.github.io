@@ -40,7 +40,7 @@
           :depends [build-all]
           :task (do (fs/delete-tree tmp)
                     (fs/copy-tree "pages" tmp)
-                    (shell "git checkout" "pages")
+                    (shell "git checkout" "gh-pages")
                     (println "Switched to pages branch")
                     ;; does not delete hidden files or dirs
                     (run! fs/delete-tree (fs/glob (fs/cwd) "**"))
