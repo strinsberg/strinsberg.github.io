@@ -3,12 +3,13 @@
 
  {:requires
   ([clojure.string :as str] [babashka.process :as ps] [babashka.fs :as fs])
+  :init (def tmp "/tmp/strinsberg.github.io")
   :enter (println (str/capitalize (:name (current-task))))
 
   clean {:doc "Remove build artifacts."
          :task (do (println "removing build...") (fs/delete-tree "build"))}
 
-  serve {:doc "Start a server in docs." :task (shell "httplz -p 8080 docs")}
+  serve {:doc "Start a server in docs." :task (shell "httplz -p 8080 pages")}
 
   ;; TODO deploy {:doc "Build and copy to gh-pages branch and push"}
   ;; TODO rethink the build process for not deploying. We do not actually need a
@@ -18,9 +19,9 @@
   ;;      to pages.
   ;; TODO rebuild {:doc "Build and serve"}
   ;; TODO maybe the build html needs to change a bit since it no longer needs to
-  ;;      move things to docs. The script to compile html is probably doing this
+  ;;      move things to pages. The script to compile html is probably doing this
   ;;      and it should leave that up to other processes. Especially, if we no
-  ;;      longer need a docs folder. Compiling should just create the final files
+  ;;      longer need a pages folder. Compiling should just create the final files
   ;;      and another target or script can do the work to move things around.
 
   build-html
@@ -32,16 +33,22 @@
 
   build-all {:doc "Build all and copy to docs."
              :depends [clean build-html build-css]
-             :task (println "*** Pages Built Succesfully ***")}}}
+             :task (println "*** Pages Built Succesfully ***")}
+
+  deploy {:doc "Build all and deploy to github pages."
+          :depends [build-all]
+          :task (do (fs/delete-tree tmp)
+                    (fs/copy-tree "pages" tmp)
+                    (shell "git checkout" "pages")
+                    ;; does not delete hidden files or dirs
+                    (run! fs/delete-tree (fs/glob (fs/cwd) "**"))
+                    (fs/copy-tree tmp (fs/cwd))
+                    (shell "git add" ".")
+                    (shell "git commit" "-m" "'updated pages'")
+                    (shell "git push")
+                    (shell "git checkout" "main")
+                    (println "*** Pages Deployed Succesfully ***"))}}}
 
 ;; TODO add a task to start a bb-nrepl and to kill it, possibly even one
 ;;      to leave the nix-shell that will clean up everything that one
 ;;      might have running before exiting, if nix shell wont do this for me.
-;; TODO add a task to serve the webpage. At the start with just html it will
-;;      probably work to just open the page and click around, but once there
-;;      is any kind of js/wasm we will need to serve it with a web server.
-;;      would be nice to have hot reload if any of the files change, or at
-;;      least a reload task for when things that wont refresh change. Obviously,
-;;      if larger js/coljure frameworks are used that require more complex
-;;      building and such we may prefer to stay inside one of their folders
-;;      and use their tools for watching and serving those parts of the project.

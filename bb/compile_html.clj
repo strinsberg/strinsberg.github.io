@@ -7,12 +7,12 @@
 ;; Converts markdown files in src-dir into html and adds results to the build dir.
 ;; Expands all compiled markdown files and writes them back to the build dir.
 ;;   This has to be done before expanding html files in src-dir because these
-;;   files are not written directly to docs. TODO either make the expansion
+;;   files are not written directly to pages. TODO either make the expansion
 ;;   recursive, which needs to keep track of which files have already been
 ;;   expanded, or check expansison of md files explicitly to ensure they are
 ;;   only expanding with snippets.
 ;; Expands all html files in src-dir by replacing placeholders with the contents
-;;   of their files and writing the new file to the docs-dir.
+;;   of their files and writing the new file to the pages-dir.
 
 ;; Placehoders must be of the form <!--** filename.ext **-->
 ;; Markdown files should only have snippet placeholders. Those snippets can be
@@ -36,7 +36,7 @@
 (def verbose (atom false))
 (def src-dir "src")
 (def build-dir "build")
-(def docs-dir "docs")
+(def pages-dir "pages")
 (def re-file-template #"<!--\*\* *([-_/a-zA-Z0-9]+\.[a-zA-Z]+) *\*\*-->")
 
 ;; Helpers ;;;;;;;;;;;;;
@@ -57,13 +57,13 @@
        ".html"))
 
 ;; Create a path for an expanded html file from
-;; src/path/to/file or build/path/to/file -> docs/path/to/file
-(defn docs-path-str
+;; src/path/to/file or build/path/to/file -> pages/path/to/file
+(defn pages-path-str
   [path]
   (let [trimmed (-> path
                     (remove-dir src-dir)
                     (remove-dir build-dir))]
-    (str docs-dir fs/file-separator trimmed)))
+    (str pages-dir fs/file-separator trimmed)))
 
 ;; Create a path for an expanded html file from
 ;; src/path/to/file -> dest/path/to/file
@@ -127,7 +127,7 @@
   [src dest snippets]
   (run!
    ;; For each html file replace placeholders with file contents
-   ;; and write the new file into the docs dir
+   ;; and write the new file into the pages dir
    (fn [path]
      (let [target-path (dest-path-str path dest src)]
        (-print " " (str path) "->" target-path)
@@ -151,4 +151,4 @@
       (-print "expanding compiled markdown:")
       (expand-all build-dir build-dir snippets)
       (-print "expanding html:")
-      (expand-all src-dir docs-dir snippets))))
+      (expand-all src-dir pages-dir snippets))))
