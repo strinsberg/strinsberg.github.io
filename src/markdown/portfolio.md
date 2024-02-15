@@ -1,4 +1,4 @@
-# Strinsberg's Portfolio
+# Steven's Portfolio
 
 <div class=abstract>
   This is a collection of my work and personal projects. It is a litte unfinished at the moment. I will add more descriptions, screenshots, and fix links to online demos for applicable projects.
@@ -9,7 +9,7 @@
 
 ## Work Experience
 
-Given that I have changed careers and gone back to school in my 30s, I do not have a lot of work experience yet. My Master's degree has been the better part of three years of work. While much of the work was self-directed it was paid for with funding and scholarships from the University of Lethbridge and my supervisors. So, I treated it as much as a full time job as was possible.
+Given that have gone back to school and changed careers, I do not have a lot of formal software engineering work experience yet. My Master's degree has been the better part of three years of work. While much of my graduate work was self-directed it was paid for with funding and scholarships from the University of Lethbridge and my supervisors. I treated it as much as a full time job as was possible.
 
 My other formal work experience came over two summers during my Bachelor's degree at the University of Lethbridge. Both of these jobs were assisting with research projects as a programmer.
 

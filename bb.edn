@@ -9,7 +9,7 @@
   clean {:doc "Remove build artifacts."
          :task (do (println "removing build...") (fs/delete-tree "build"))}
 
-  serve {:doc "Start a server in docs." :task (shell "httplz -p 8080 pages")}
+  serve {:doc "Start a server in pages." :task (shell "httplz -p 8080 pages")}
 
   ;; TODO deploy {:doc "Build and copy to gh-pages branch and push"}
   ;; TODO rethink the build process for not deploying. We do not actually need a
@@ -26,12 +26,13 @@
 
   build-html
   {:doc
-   "Compile html files and copy them to docs directory. Will replace any existing files in docs and will not remove any that are no longer in src."
+   "Compile html files and copy them to pages directory. Will replace any existing files in pages and will not remove any that are no longer in src."
    :task compile-html/-main}
 
-  build-css {:doc "Copy css files to docs" :task (shell "cp -r src/css docs/")}
+  build-css {:doc "Copy css files to pages"
+             :task (shell "cp -r src/css pages/")}
 
-  build-all {:doc "Build all and copy to docs."
+  build-all {:doc "Build all and copy to pages."
              :depends [clean build-html build-css]
              :task (println "*** Pages Built Succesfully ***")}
 
@@ -40,11 +41,13 @@
           :task (do (fs/delete-tree tmp)
                     (fs/copy-tree "pages" tmp)
                     (shell "git checkout" "pages")
+                    (println "Switched to pages branch")
                     ;; does not delete hidden files or dirs
                     (run! fs/delete-tree (fs/glob (fs/cwd) "**"))
                     (fs/copy-tree tmp (fs/cwd))
+                    (println "Copied new pages files")
                     (shell "git add" ".")
-                    (shell "git commit" "-m" "'updated pages'")
+                    (shell "git commit" "-m" "'update pages'")
                     (shell "git push")
                     (shell "git checkout" "main")
                     (println "*** Pages Deployed Succesfully ***"))}}}
