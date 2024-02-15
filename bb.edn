@@ -4,27 +4,31 @@
  {:requires
   ([clojure.string :as str] [babashka.process :as ps] [babashka.fs :as fs])
   :init (def tmp "/tmp/strinsberg.github.io")
-  :enter (println (str/capitalize (:name (current-task))))
+  :enter (let [task (current-task)]
+           (when (not (str/starts-with? (str (:name task)) "-"))
+             (println (str/capitalize (:name task)) " - " (:doc task))))
 
-  clean {:doc "Remove build artifacts."
-         :task (do (println "Removing build dirs...")
-                   (fs/delete-tree "build")
-                   (fs/delete-tree "pages"))}
+  build {:doc "Convert markdown to html and replace html placeholders."
+         :task (do (run 'clean)
+                   (run '-build:html)
+                   (run '-build:css)
+                   (println "*** Pages Built Succesfully ***"))}
 
-  build-html
-  {:doc
-   "Compile html files and copy them to pages directory. Will replace any existing files in pages and will not remove any that are no longer in src."
-   :task compile-html/-main}
+  ;; Note this does not clean the pages folder, but just copies/replaces
+  ;; new or modified files. Removed src files will not be removed during build.
+  -build:html {:doc "Compile html files and copy them to pages directory."
+               :task compile-html/-main}
 
-  build-css {:doc "Copy css files to pages"
-             :task (shell "cp -r src/css pages/")}
+  -build:css {:doc "Copy css files to pages"
+              :task (shell "cp" "-r" "src/css" "pages/")}
 
-  build-all {:doc "Build all and copy to pages."
-             :depends [clean build-html build-css]
-             :task (println "*** Pages Built Succesfully ***")}
 
+  ;; Note that once this is running build-all can be called again and a page
+  ;; refresh will reflect the changes. Not exactly hot reload, but the server
+  ;; will reflect changes without having to be restarted, but obviously
+  ;; the compilation must be re-run for changes to be reflected in the pages dir.
   serve {:doc "Build and serve"
-         :depends [build-all]
+         :depends [build]
          :task (shell "httplz -p 8080 pages")}
 
   ;; This works, though I am honestly not sure if it is the best way to do it.
@@ -32,11 +36,10 @@
   ;; carried over when checking out gh-pages and then deleted along with
   ;; the previous contents of gh-pages.
   deploy {:doc "Build all and deploy to github pages."
-          :depends [build-all]
+          :depends [build]
           :task (do (fs/delete-tree tmp)
                     (fs/copy-tree "pages" tmp)
                     (shell "git checkout" "gh-pages")
-                    (println "Switched to pages branch")
                     ;; does not delete hidden files or dirs
                     (run! fs/delete-tree (fs/glob (fs/cwd) "**"))
                     (fs/copy-tree tmp (fs/cwd))
@@ -45,4 +48,7 @@
                     (shell "git commit" "-m" "'update pages'")
                     (shell "git push")
                     (shell "git checkout" "main")
-                    (println "*** Pages Deployed Succesfully ***"))}}}
+                    (println "*** Pages Deployed Succesfully ***"))}
+
+  clean {:doc "Remove build artifacts."
+         :task (do (fs/delete-tree "build") (fs/delete-tree "pages"))}}}
