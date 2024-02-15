@@ -7,22 +7,9 @@
   :enter (println (str/capitalize (:name (current-task))))
 
   clean {:doc "Remove build artifacts."
-         :task (do (println "removing build...") (fs/delete-tree "build"))}
-
-  serve {:doc "Start a server in pages." :task (shell "httplz -p 8080 pages")}
-
-  ;; TODO deploy {:doc "Build and copy to gh-pages branch and push"}
-  ;; TODO rethink the build process for not deploying. We do not actually need a
-  ;;      docs or pages folder. The required stuff could be copied to the other
-  ;;      branch without it, or with something temp. However, if it is easier to
-  ;;      serve it from a directory separate from build we should rename docs back
-  ;;      to pages.
-  ;; TODO rebuild {:doc "Build and serve"}
-  ;; TODO maybe the build html needs to change a bit since it no longer needs to
-  ;;      move things to pages. The script to compile html is probably doing this
-  ;;      and it should leave that up to other processes. Especially, if we no
-  ;;      longer need a pages folder. Compiling should just create the final files
-  ;;      and another target or script can do the work to move things around.
+         :task (do (println "Removing build dirs...")
+                   (fs/delete-tree "build")
+                   (fs/delete-tree "pages"))}
 
   build-html
   {:doc
@@ -36,6 +23,14 @@
              :depends [clean build-html build-css]
              :task (println "*** Pages Built Succesfully ***")}
 
+  serve {:doc "Build and serve"
+         :depends [build-all]
+         :task (shell "httplz -p 8080 pages")}
+
+  ;; This works, though I am honestly not sure if it is the best way to do it.
+  ;; Note that because build and pages are not tracked by git they will be
+  ;; carried over when checking out gh-pages and then deleted along with
+  ;; the previous contents of gh-pages.
   deploy {:doc "Build all and deploy to github pages."
           :depends [build-all]
           :task (do (fs/delete-tree tmp)
@@ -51,7 +46,3 @@
                     (shell "git push")
                     (shell "git checkout" "main")
                     (println "*** Pages Deployed Succesfully ***"))}}}
-
-;; TODO add a task to start a bb-nrepl and to kill it, possibly even one
-;;      to leave the nix-shell that will clean up everything that one
-;;      might have running before exiting, if nix shell wont do this for me.
