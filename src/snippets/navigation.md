@@ -1,7 +1,8 @@
-<div id=navigation>
+<nav class="nav-list">
 
-## Navigation<button class="mode-button" onclick="toggle_dark_mode()">🌗</button>
-  1. [Home](/)
-  2. [Portfolio](/portfolio.html)
+[Home](/index.html) |
+[Portfolio](/portfolio.html) |
+<a href="https://www.linkedin.com/in/steven-d-a8b954237" target="_blank">LinkedIn</a> |
+<a href="https://github.com/strinsberg" target="_blank">GitHub</a>
 
-</div>
+</nav>
