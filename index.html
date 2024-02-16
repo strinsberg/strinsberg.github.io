@@ -43,21 +43,27 @@
   <title>Steven's Homepage</title>
 </head>
 
-<body onload="set_mode()">
-  <h1 id="stevens-homepage">Steven’s Homepage</h1>
+<body class="libertinus" onload="set_mode()">
+  <h1 id="stevens-homepage">Steven’s Homepage
+<button class="mode-button smaller"
+        onclick="toggle_dark_mode()"
+        title="Toggle light and dark mode">🌗</button>
+</h1>
 <div class="abstract">
-<p>This page is still under construction and will eventually contain
-actual information about me and links to other pages as I add them. For
-now there is just a link to my portfolio, which is where I am sending
-people first. Perhaps I will just merge them both eventually.</p>
-</div>
-<h2
-id="navigation">Navigation<button class="mode-button" onclick="toggle_dark_mode()">🌗</button></h2>
-<ol type="1">
-<li><a href="/">Home</a></li>
-<li><a href="/portfolio.html">Portfolio</a></li>
-</ol>
+<summary>
+This page is still under construction and will eventually contain actual
+information about me and links to other pages as I add them. For now
+there is just a link to my portfolio, which is where I am sending people
+first. Perhaps I will just merge them both eventually. <br>
+</summary>
+<nav class="nav-list">
+<p><a href="/index.html">Home</a> | <a
+href="/portfolio.html">Portfolio</a> |
+<a href="https://www.linkedin.com/in/steven-d-a8b954237" target="_blank">LinkedIn</a>
+| <a href="https://github.com/strinsberg" target="_blank">GitHub</a></p>
+</nav>
 
+</div>
 
   <div>
   <br>
