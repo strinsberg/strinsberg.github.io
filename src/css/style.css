@@ -13,9 +13,15 @@ body {
   font-size: 125%;
 }
 
-.smaller {
+.small {
   font-size: 66%;
 }
+
+.goto-top {
+  text-align: right;
+}
+
+
 
 
 /* Old Stuff for Image thumbnails */

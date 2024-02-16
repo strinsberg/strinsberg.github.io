@@ -1,4 +1,4 @@
-<nav class="nav-list">
+<nav id="nav" class="nav-list">
 
 [Home](/index.html) |
 [Portfolio](/portfolio.html) |
