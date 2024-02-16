@@ -44,12 +44,19 @@
 </head>
 
 <body class="libertinus" onload="set_mode()">
-  <h1 id="stevens-portfolio">Steven’s Portfolio
-<button class="mode-button smaller"
+  <h1 id="portfolio">Portfolio <button class="mode-button small"
         onclick="toggle_dark_mode()"
         title="Toggle light and dark mode">🌗</button>
 </h1>
 <div class="abstract">
+<nav id="nav" class="nav-list">
+<p><a href="/index.html">Home</a> | <a
+href="/portfolio.html">Portfolio</a> |
+<a href="https://www.linkedin.com/in/steven-d-a8b954237" target="_blank">LinkedIn</a>
+| <a href="https://github.com/strinsberg" target="_blank">GitHub</a></p>
+</nav>
+
+<p><br></p>
 <summary>
 <p>This is a collection of my work and personal projects. It is still a
 work in progress and I will add more descriptions, screenshots, and
@@ -57,24 +64,37 @@ demos where possible. In addition to finishing a Bachelor’s and Master’s
 degree in computer science I have put countless hours into learning new
 things.</p>
 <p><br></p>
-<p>You can find a little bit of everything here including interpreters,
+You can find a little bit of everything here including interpreters,
 compilers, software engineering research, and a video game or two. Most
 of it was just done for learning purposes and for fun. A few things,
 like my research and work experience, have some practical value. As for
 the rest its value lies in what it taught me about technologies,
-problem-solving, and what it takes to design and build software.
-Enjoy!</p>
-<p><br></p>
+problem-solving, and what it takes to design and build software. Enjoy!
 </summary>
-<nav class="nav-list">
-<p><a href="/index.html">Home</a> | <a
-href="/portfolio.html">Portfolio</a> |
-<a href="https://www.linkedin.com/in/steven-d-a8b954237" target="_blank">LinkedIn</a>
-| <a href="https://github.com/strinsberg" target="_blank">GitHub</a></p>
-</nav>
-
 </div>
-<h2 id="work-experience">Work Experience</h2>
+<hr>
+<h1 id="contents">Contents</h1>
+<ul>
+<li><a href="#work">Work Experience</a>
+<ul>
+<li><a href="#thesis">Master’s Thesis</a></li>
+<li><a href="#pwars">Program Wars</a></li>
+<li><a href="#slrg">Research Data Collection</a></li>
+</ul></li>
+<li><a href="#projects">Personal Projects</a>
+<ul>
+<li><a href="#langs">Interpreters, Compilers, and Virtual
+Machines</a></li>
+<li><a href="#cli">Command Line Tools</a></li>
+<li><a href="#games">Games and Game Engines</a></li>
+<li><a href="#others">Others</a></li>
+</ul></li>
+</ul>
+<br>
+<hr>
+<h1 id="work">
+Work Experience
+</h1>
 <p>Given that have gone back to school and changed careers, I do not
 have a lot of formal software engineering work experience. However, my
 Master’s degree has been the better part of three years of work and I
@@ -90,7 +110,9 @@ tools. The other job was less formal, and I spent most of the summer
 writing Python scripts to automate collecting source code samples and
 storing them in a simple database. However, it was important that the
 tools I made were well documented and useable by future students.</p>
-<h3 id="masters-thesis">Master’s Thesis</h3>
+<h2 id="thesis">
+Master’s Thesis
+</h2>
 <p>I did my M.Sc. Computer Science at the University of Lethbridge
 co-supervised by Dr. Jackie Rice and Dr. John Anvik. I investigated
 using abstract syntax trees as a method of measuring a developer’s
@@ -131,21 +153,99 @@ and experience in defect prediction and other relevant areas.
 </blockquote>
 <p><a href="https://hdl.handle.net/10133/6638" target="_blank">Thesis</a></p>
 <p><em>GitHub Link Coming Soon</em>
-<!--[Github](https://github.com/strinsberg/masters)--></p>
-<h3 id="program-wars">Program Wars</h3>
+<!-- [Github](https://github.com/strinsberg/masters) --></p>
+<h2 id="pwars">
+Program Wars
+</h2>
+<p>Program wars is a web-based educational card game designed to teach
+fundamental programming and cybersecurity concepts, you can read the
+version 1.0 paper for more details. I was hired for the summer to
+collaborate with researchers looking to further expand the game and
+polish the code. We ended up working on a couple of different versions
+over the summer.</p>
+<p>During the course of the summer there were actually two versions of
+the game and the code. When I started libraries had to be updated since
+it had been a while since anyone had worked on version 1.0. During this
+process I took a fair amount of time to clean up the code. Smaller parts
+of the code were reasonably clean, but over time having had several
+different summer student programmers add features had created a lot of
+jumbled and redundant things. I remade some of the Vue.js components and
+tried to better organize the code and the flow of information through
+the program. We also experimented with adding a number of new cards and
+concepts to the game during this period.</p>
+<p>However, as the game progressed and the research changed several new
+features were added that took the game in a slightly different
+direction. It was also decided that with a potential version 3.0 that
+features like deck building and other game modes might be introduced. A
+single game mode can easily be designed to run on a single screen and
+have all the features coded to that screen. However, when you start
+adding different scoring systems, card designs, turn flow, and UI
+elements it is easier to have them as decoupled as possible and have
+multiple views for different modes. Even with the refactoring it was
+clear that extending version 1.5 to add these features would be
+difficult (at least with my current skill level and the possible skill
+level of future summer students). We decided to do a full rewrite using
+a more OOP design approach. This made it easy to share different
+features between game modes while being able to customize modes to have
+their own logic. Vue.js and Vuex are generally design for a more
+functional design than OOP, so there were some small things to smooth
+out, but it worked out quite well in the end and kept the code design
+similar to what summer students would be experienced with.</p>
+<p>Another significant change I made was to the UI. In version 1.0 each
+player’s turn took place on its own screen. This made it difficult to
+see what the other player’s status was and to make decisions. I
+reorganized the UI to have both players on the screen at a time (and
+with 4 players in version 1.5). We added information elements for the
+player to get quick rules updates and a list of icons to show the last
+10 plays that were made by each player.</p>
 <p><a href="https://github.com/strinsberg/Program-Wars" target="_blank">GitHub</a></p>
 <p><a href="https://program-wars.firebaseapp.com" target="_blank">Play
-The Game</a></p>
-<h3 id="sociolinguistics-research-data-collection">Sociolinguistics
-Research Data Collection</h3>
+Version 2.0</a></p>
+<p><a href="https://programming-wars.firebaseapp.com" target="_blank">Play
+Version 1.5</a></p>
+<p><a href="https://opus.uleth.ca/server/api/core/bitstreams/d705aaaa-49f2-44da-8d0e-0cffebac0289/content" target="_blank">Version
+1.0 Paper</a></p>
+<h2 id="slrg">
+Research Data Collection
+</h2>
+<p>This was my first job using my programming skills. It primarily
+involved building a database of programming samples for researchers. I
+spent most of my time writing and running Python scripts that used the
+GitHub API to download source code that had a single author. I also
+wrote some scripts that collected contest programming solutions from
+Codeforces.com. Once samples were collected they were stored in a MySql
+database along with relevant author information. The research involved
+using these samples and author information to train machine learning
+algorithms to identify sociolinguistic characteristics of the program’s
+author such as their region, gender, or experience level.</p>
+<p>In additions to creating the simple database of source code and
+author information I needed to make the scripts I wrote as easy as I
+could for future students to use to collect additional data. As it was
+my first go at this type of programming, I am not sure that I fully
+succeeded. However, I set the scripts up as best I could and used a
+config file to allow users to make some changes without having to modify
+the scripts. I also thoroughly documented both how to use the scripts
+and the technical details of how the data was collected.</p>
+<p>It was a great learning experience and being involved with the
+research team is one of the things that motivated me to pursue a
+Master’s degree. It also taught me that there are many more things to
+think about when writing programs for other people to use. And most
+importantly, if I write scripts that will run for days at a time they
+need to be as robust as possible and make it easy to restart them where
+they left off when they crash!</p>
 <p><a href="https://github.com/strinsberg/slrg_data" target="_blank">GitHub</a></p>
-<h2 id="personal-projects">Personal Projects</h2>
+<br>
+<hr>
+<h1 id="projects">
+Personal Projects
+</h1>
 <p>Since discovering computer programming I have built a lot of things
 for fun and learning. I have listed many of them below. Some are more
 finished than others and a few are school projects or extensions of
 school projects. A few of them are even somewhat useful 😁.</p>
-<h3 id="interpreters-compilers-and-vms">Interpreters, Compilers, and
-VMs</h3>
+<h2 id="langs">
+Interpreters, Compilers, and VMs
+</h2>
 <p>If there is one computer science topic I love the most it is
 programming languages and their implementations. The simple fact that I
 can give the computer instructions is pretty amazing, but combine that
@@ -164,7 +264,7 @@ and robust programming language on my own, but it is not really
 practical. There are so many amazing languages out there that many
 people have spent many years refining. So, each of my projects have only
 been taken so far.</p>
-<h4 id="rusp">Rusp</h4>
+<h3 id="rusp">Rusp</h3>
 <p>Rusp is an interpreter for a lisp-like language that I am working on.
 It will be somewhat like a mashup between Clojure and Scheme, but with
 some of my own syntax and built-in functions. While it is not terribly
@@ -189,7 +289,7 @@ structures, but it would not bundle the full interpreter into the
 runtime. Either way it is not something I will get to in the near
 future. Just a fun project for the future.</p>
 <p><a href="https://github.com/strinsberg/rusp" target="_blank">GitHub</a></p>
-<h4 id="scheme">Scheme</h4>
+<h3 id="scheme">Scheme</h3>
 <p>As a precursor to Rusp I made a Scheme interpreter in Rust following
 the r5rs standard. I did not implement the whole standard. Most notably
 some number and math stuff is missing along with macros and
@@ -212,7 +312,9 @@ will keep me coming back to Rust for future projects.</p>
 <p><em>Web Demo Coming Soon</em> <!--[Try It](/)--></p>
 <p><a href="https://github.com/strinsberg/scheme-interpreter" target="_blank">Original
 School Project GitHub</a></p>
-<h4 id="lt-64-vm">Lt-64 VM</h4>
+<h3 id="lt-64">
+Lt-64 VM
+</h3>
 <p>A fun little virtual machine that I made that has a fixed size
 memory. I also wrote an assembler for it and then wrote a simple lisp
 interpreter in the assembly language. Of course, I eventually ran into a
@@ -232,7 +334,7 @@ could use that knowledge to build a better one in the future.</p>
 GitHub</a></p>
 <p><a href="https://github.com/strinsberg/ltsp" target="_blank">Ltsp
 GitHub</a></p>
-<h4 id="pascal-subset-compiler">Pascal Subset Compiler</h4>
+<h3 id="pascal-subset-compiler">Pascal Subset Compiler</h3>
 <p>This is a project that came out of a compilers course I took during
 my Bachelor’s degree. We had to write a compiler for a subset of Pascal
 over the years. At the end of the semester before I started my summer
@@ -250,12 +352,14 @@ wonderful learning experience.</p>
 <p><a href="https://github.com/strinsberg/plcc" target="_blank">GitHub</a></p>
 <p><a href="https://github.com/strinsberg/pl_compiler" target="_blank">Original
 School Project GitHub</a></p>
-<h3 id="command-line-tools">Command Line Tools</h3>
+<h2 id="cli">
+Command Line Tools
+</h2>
 <p>I have also made a few command line programs and tools over the years
 to help me accomplish a task or just to learn something and practice
 programming. I don’t often have a need that cannot be met by an existing
 project, but it is fun to be able to build something useful.</p>
-<h4 id="easy-mark">Easy Mark</h4>
+<h3 id="easy-mark">Easy Mark</h3>
 <p>I really enjoyed using Crowd Mark for marking in a few of my classes
 as a teaching assistant. However, very few of the classes I marked for
 used it. During the pandemic all assignments went virtual and this meant
@@ -271,8 +375,9 @@ felt good to use my skills to actually help me get my work done. It was
 not perfect and by no means a replacement for Crowd Mark, but it did the
 trick.</p>
 <p><a href="https://github.com/strinsberg/easy-mark" target="_blank">GitHub</a></p>
-<h4 id="clint-cli-integration-testing">Clint (cli integration
-testing)</h4>
+<h3 id="clint">
+Clint (cli integration testing)
+</h3>
 <p>This is another program that I will continue actively working on. I
 originally built it to allow easily testing the <a
 href="#lt-64">lt-64</a> vm. Because lt-64 was written in C it was not as
@@ -305,7 +410,7 @@ little to no changes. And like most of my other projects, I get to
 contemplate an important software engineering topic and learn new
 things.</p>
 <p><a href="https://github.com/strinsberg/clint" target="_blank">GitHub</a></p>
-<h4 id="hockey-stats-viewer">Hockey Stats Viewer</h4>
+<h3 id="hockey-stats-viewer">Hockey Stats Viewer</h3>
 <p>This should just be an SQL database lol. However, having it on my
 first resume may have gotten me my first programming job, so it was
 worth it. It is written in AWK, which was useful and not a bad idea, but
@@ -319,21 +424,23 @@ a job). Plus, a professor once overheard me describing it to some
 friends and asked incredulously “You write programs in AWK?”, which gave
 us all a good laugh.</p>
 <p><a href="https://github.com/strinsberg/hockey-stats" target="_blank">GitHub</a></p>
-<h4 id="simple-text">Simple Text</h4>
+<h3 id="simple-text">Simple Text</h3>
 <p>I wrote an ncurses command line editor, and it worked! Like many of
 these projects it was just for fun and learning. I did everything as
 simply as I could, and I am sure if you opened a large file it would
 crash or freeze. So, no need to ditch Nano, Vim, Emacs, or VsCode
 anytime soon.</p>
 <p><a href="https://github.com/strinsberg/simple-text" target="_blank">GitHub</a></p>
-<h3 id="games-and-game-engines">Games And Game Engines</h3>
+<h2 id="games">
+Games And Game Engines
+</h2>
 <p>Like everyone that has learned to program I have made a few video
 games. I find I am generally more interested in creating the games
 architecture and algorithms than I am in writing a compelling and fun
 video game. As a result I have not really spent that much time making
 video games. Below are two projects that I put the most time and effort
 into.</p>
-<h4 id="dgsl">DGSL</h4>
+<h3 id="dgsl">DGSL</h3>
 <p>This is another project that was born out of a class project. We were
 supposed to build a text adventure game and use OOP design principles. I
 took this a little too far and basically built a text adventure game
@@ -361,30 +468,32 @@ GitHub</a></p>
 Builder GitHub</a></p>
 <p><a href="https://github.com/strinsberg/good-ship-lethbridge" target="_blank">Original
 School Project GitHub</a></p>
-<h4 id="space-match-3000">Space Match 3000</h4>
+<h3 id="space-match-3000">Space Match 3000</h3>
 <p>This is one of my earliest programming attempts. It is a very simple
 game that I wrote because I wanted to try writing some algorithms to
 deal with a match 3 board. I even ended up using the state pattern to
 make switching between game modes easier. The most important thing about
 it was that it was technically finished and worked if I compiled it for
-Linux and for my friends on Windows (thanks to the Love2d framework).
-And now it is mostly playable online as well thanks to someone’s WASM
-compiler. Though the UI design is not user-friendly, using keybinds to
-select menu elements and the mouse to play the actual game. And you
-can’t save games online. But I finished it, and it worked, and it did
-what it was expected to do, and seemingly with few to no bugs. I even
-learned that spelling mistakes are far more costly in a language like
-Lua where every variable is set to nil even if it has never been
-declared before. Nothing like 4 hours of debugging to find you got two
-letters in a variable name swapped 😢.</p>
+Linux and for my friends on Windows (thanks to the <a
+href="https://love2d.org/">Love2d</a> framework). And now it is mostly
+playable online as well thanks to someone’s WASM compiler. Though the UI
+design is not user-friendly, using keybinds to select menu elements and
+the mouse to play the actual game. And you can’t save games online. But
+I finished it, and it worked, and it did what it was expected to do, and
+seemingly with few to no bugs. I even learned that spelling mistakes are
+far more costly in a language like Lua where every variable is set to
+nil even if it has never been declared before. Nothing like 4 hours of
+debugging to find you got two letters in a variable name swapped 😢.</p>
 <p><a href="https://github.com/strinsberg/space-match-3000" target="_blank">GitHub</a></p>
 <p><a href="https://strinsberg.github.io/space-match-3000/" target="_blank">Play
 The Game</a></p>
-<h3 id="others">Others</h3>
+<h2 id="others">
+Others
+</h2>
 <p>Finally, some other projects that I have worked on over the years.
 These include some of my competitive programming solutions and some
 other school projects.</p>
-<h4 id="competitive-programming">Competitive Programming</h4>
+<h3 id="competitive-programming">Competitive Programming</h3>
 <p>I was on a competitive programming team for two years while doing my
 Bachelor’s degree at the University of Lethbridge. Honestly, it was not
 my strong suit. I am more of a slow contemplative problem solver and to
@@ -404,7 +513,7 @@ most of one year’s Advent of Code solutions and some solutions from a
 course taught at ULeth focusing on contest programming style
 problem-solving.</p>
 <p><a href="https://github.com/strinsberg/competitive-programming" target="_blank">GitHub</a></p>
-<h4 id="issue-tracker-rest-api">Issue Tracker REST API</h4>
+<h3 id="issue-tracker-rest-api">Issue Tracker REST API</h3>
 <p>A school project where we built a REST API in C++ and a simple web
 client to access it. The project was also done to try and simulate Agile
 development. We did it in teams of 3 and had to present proposals and do
@@ -419,7 +528,7 @@ that is very applicable to the world of software development. Though
 there are definitely easier technologies to build rest services with
 than C++ 😉.</p>
 <p><a href="https://github.com/strinsberg/tracker-express" target="_blank">GitHub</a></p>
-<h4 id="command-line-card-games">Command Line Card Games</h4>
+<h3 id="command-line-card-games">Command Line Card Games</h3>
 <p>A couple of school projects where we had to implement some card games
 for the command line. These focused on using OOP design, doing unit
 testing and mocking, and using continuous integration tools to automate
