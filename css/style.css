@@ -1,0 +1,71 @@
+body {
+  font-size: 1.2em;
+}
+
+.mode-button {
+  cursor: pointer;
+  border: 0px solid rgb(0,0,0,0);
+  background-color: transparent;
+  float: right;
+}
+
+.bigger {
+  font-size: 125%;
+}
+
+.small {
+  font-size: 66%;
+}
+
+.goto-top {
+  text-align: right;
+}
+
+.nav-list {
+  width: 100%;
+  text-align: center;
+}
+
+
+
+
+/* Old Stuff for Image thumbnails */
+.img-head {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 30%;
+}
+
+.middle {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+}
+
+.img-preview-col {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.img-preview-row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media screen and (max-width: 500px) {
+  .img-head {
+    width: 70%
+  }
+
+  .img-preview-col {
+    width: 100%;
+  }
+
+  .end {
+    display: none;
+  }
+}

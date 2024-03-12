@@ -1,5 +1,18 @@
-{:paths ["bb"]
+{:paths ["bb" "src"]
  :tasks
+
+ ;; TODO ;;
+
+ ; New task to build by writing each page from the clj files
+ ; Create a function to build a table of contents from the body hiccup. Since we already add id's to each heading we need to identify the levels we want and when we find a heading we add it to the contents with the title and a link to the page id. Each level will start a list until we see a heading below it and then we finish with that level.
+ ; Add all content back to the portfolio and clean it up
+ ; Add screenshots and some nice functions to deal with them, use an assets folder
+ ; Add a new home page
+ ; Add a 404 page
+ ; Copy files from css to pages/css
+ ; Copy files from js to pages/js. This needs to not copy cljs files, by either putting them in a subdirectory and adjusting the cljs import function or looking at the extension and only copying folders and .js. I think the former is better, then I can copy things like wasm and just ignore the folder with cljs functions that will be added to html for scittle. OR *** Just use the scittle functionality to be able to get the code from a file and have a js folder that we straight copy to the destination folder.
+ ; See about serving a folder without the httplz nix-shell, we want to either have the ability to serve a folder with coljure or just go back to using a python 3 command. This is all just for me, so I do not need to worry about dependencies. I will always have python installed.
+
 
  {:requires
   ([clojure.string :as str] [babashka.process :as ps] [babashka.fs :as fs])
