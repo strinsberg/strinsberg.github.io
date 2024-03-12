@@ -5,11 +5,11 @@
 <br>
 
 <summary>
-  This is a collection of my work and personal projects. It is still a work in progress and I will add more descriptions, screenshots, and demos where possible. In addition to finishing a Bachelor's and Master's degree in computer science I have put countless hours into learning new things.
+Below is a collection of my work and personal projects. It is still a work in progress. I will add more descriptions, screenshots, and demos where possible. In addition to finishing a bachelor's and master's degree in computer science, I have put thousands of hours into personal projects and learning.
 
-  <br>
+<br>
 
-  You can find a little bit of everything here including interpreters, compilers, software engineering research, and a video game or two. Most of it was just done for learning purposes and for fun. A few things, like my research and work experience, have some practical value. As for the rest its value lies in what it taught me about technologies, problem-solving, and what it takes to design and build software. Enjoy!
+You can find a little bit of everything here, including interpreters, compilers, software engineering research, and a video game or two. While my research and work experience have more practical value, I worked on most of my personal projects to learn something new and have fun. The value of these projects lies in what the process taught me about the different technologies, the many approaches to problem-solving, and what it takes to design and build software.
 </summary>
 </div>
 
@@ -32,13 +32,13 @@
 
 <h1 id="work">Work Experience</h1>
 
-Given that have gone back to school and changed careers, I do not have a lot of formal software engineering work experience. However, my Master's degree has been the better part of three years of work and I treated it like a full time job as much as possible. After all, it was paid for with funding and scholarships from the University of Lethbridge and my supervisors. 
+My experience in formal software development is somewhat limited. I worked as an electrician for many years before returning to school and changing careers. Since then, I've had three opportunities to work in a more formal environment. Most recently, I pursued my master's degree and researched using abstract syntax trees for recording programming knowledge and experience. Before that, I held two summer positions working for researchers. In one, I added new features to an educational web-based card game. In the other, I automated the collection of programming language samples for research and stored them in a simple database. Throughout these experiences, I had the pleasure of working with several great people and learning many new things.
 
-I also had two jobs assisting with research projects during the summers while at the University of Lethbridge. One was a more formal development job where I rebuilt an educational web-based card game. Here we followed software engineering practices with weekly standup-like meetings, automated testing, documentation, and continuous integration tools. The other job was less formal, and I spent most of the summer writing Python scripts to automate collecting source code samples and storing them in a simple database. However, it was important that the tools I made were well documented and useable by future students.
 
 <h2 id="thesis">Master's Thesis</h2>
+I completed my M.Sc. Computer Science at the University of Lethbridge co-supervised by Dr. Jackie Rice and Dr. John Anvik. For this work, I investigated using abstract syntax trees to measure a developer's experience with a piece of code. I created five new metrics that capture how much experience a developer has with the source code they are modifying. I used statistical and machine learning methods to evaluate these metrics in the context of defect detection. The final results showed that the new metrics were a statistically significant predictor of defects at commit time.
 
-I did my M.Sc. Computer Science at the University of Lethbridge co-supervised by Dr. Jackie Rice and Dr. John Anvik. I investigated using abstract syntax trees as a method of measuring a developer's experience with a piece of code. The abstract and a link to the thesis are below. The code repository is not available yet as it needs some cleaning up. I also plan on making a separate page with more information along with the slides and transcript of my short thesis presentation that introduces some of the more interesting results. For now if you are interested in the results you will have to look at the thesis.
+Below is the abstract for my work. I am also working on adding links to the thesis, slides from my thesis defense, and the project's GitHub repository with code for data collection and my final datasets.
 
 <div class=abstract>
 <h3>Measuring Developer Experience with Abstract Syntax Trees</h3>
@@ -48,9 +48,12 @@ I did my M.Sc. Computer Science at the University of Lethbridge co-supervised by
 Accurately representing a developer's programming knowledge and experience is difficult. Traditional metrics rely on counting the number of times a developer has used or made changes to pieces of code. When a developer has modified a file in the past they are less likely to introduce defects with a change. However, these metrics do not contain any general information on the structure or purpose of a piece of code and are only useful when developers work on a piece of code more than once. We investigated the use of several new metrics based on abstract syntax trees (ASTs) as a possible way to more completely measure a developer's experience. By using the ASTs of code previously modified by a developer we may be able to identify their experience with a piece of code they are modifying even if they have never modified that specific code before. Through statistical analysis and machine learning predictions we show that AST-based metrics capture a more general programming experience than count-based metrics. In their current form, AST-based metrics do not offer any significant improvements over existing metrics for defect prediction. However, our work offers a starting point for future use of ASTs for representation of knowledge and experience in defect prediction and other relevant areas.
 </blockquote>
 
-<a href="https://hdl.handle.net/10133/6638" target="_blank">Thesis</a>
-
+<nav class="nav-list">
+<a href="https://hdl.handle.net/10133/6638" target="_blank">Thesis</a> |
+*Slides Coming Soon* |
 *GitHub Link Coming Soon* <!-- [Github](https://github.com/strinsberg/masters) -->
+</nav>
+
 
 <h2 id="pwars">Program Wars</h2>
 
@@ -62,13 +65,12 @@ However, as the game progressed and the research changed several new features we
 
 Another significant change I made was to the UI. In version 1.0 each player's turn took place on its own screen. This made it difficult to see what the other player's status was and to make decisions. I reorganized the UI to have both players on the screen at a time (and with 4 players in version 1.5). We added information elements for the player to get quick rules updates and a list of icons to show the last 10 plays that were made by each player.
 
-<a href="https://github.com/strinsberg/Program-Wars" target="_blank">GitHub</a>
-
-<a href="https://program-wars.firebaseapp.com" target="_blank">Play Version 2.0</a>
-
-<a href="https://programming-wars.firebaseapp.com" target="_blank">Play Version 1.5</a>
-
+<br>
+<nav class="nav-list">
+<a href="https://github.com/strinsberg/Program-Wars" target="_blank">GitHub</a> |
+<a href="https://program-wars.firebaseapp.com" target="_blank">Play Version 2.0</a> |
 <a href="https://opus.uleth.ca/server/api/core/bitstreams/d705aaaa-49f2-44da-8d0e-0cffebac0289/content" target="_blank">Version 1.0 Paper</a>
+</nav>
 
 <h2 id="slrg">Research Data Collection</h2>
 
@@ -78,7 +80,10 @@ In additions to creating the simple database of source code and author informati
 
 It was a great learning experience and being involved with the research team is one of the things that motivated me to pursue a Master's degree. It also taught me that there are many more things to think about when writing programs for other people to use. And most importantly, if I write scripts that will run for days at a time they need to be as robust as possible and make it easy to restart them where they left off when they crash!
 
+<br>
+<nav class="nav-list">
 <a href="https://github.com/strinsberg/slrg_data" target="_blank">GitHub</a>
+</nav>
 
 <br>
 <hr>
