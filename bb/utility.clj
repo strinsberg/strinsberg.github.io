@@ -34,3 +34,30 @@
            (drop-while
             (fn [node] (not (or (= (first node) 'def) (= (first node) 'defn))))
             cljs))))
+
+(defn filter-headings
+  "From a hiccup element return a list of heading info maps from top-level headings."
+  [hiccup-body max-depth]
+  (->> (if (map? (second hiccup-body)) (drop 2 hiccup-body) (rest hiccup-body))
+       (filter (fn [x]
+                 (and (vector? x) (re-matches #":h[1-9]" (str (first x))))))
+       (map (fn [x]
+              {:rank (parse-long (str (nth (str (first x)) 2)))
+               :title (apply str (nth x 2))
+               :id (:id (second x))}))
+       (filter (fn [x] (<= (:rank x) max-depth)))))
+
+(defn contents-tree
+  "Return a list of heading info maps with subheadings nested inside the :children key."
+  [xs]
+  (cond (empty? xs) (list)
+        (empty? (rest xs)) (list (first xs))
+        :else (let [head (first xs)
+                    children (contents-tree
+                              (take-while (fn [x] (> (:rank x) (:rank head)))
+                                          (rest xs)))
+                    next (contents-tree (drop-while
+                                         (fn [x] (> (:rank x) (:rank head)))
+                                         (rest xs)))]
+                (cons (assoc head :children children) next))))
+

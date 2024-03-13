@@ -6,6 +6,8 @@
 
 ;; Page Building ;;
 
+(def max-contents-depth 2)
+
 (defn head
   [title]
   [:head [:title title]
@@ -37,14 +39,17 @@
   [["Home" "/"] ["Portfolio" "/portfolio"]
    ["Github" "https://github.com/strinsberg"]])
 
+(defn link
+  [[text href]]
+  (let [opt {:href href}]
+    [:a (if (str/starts-with? text "/") opt (assoc opt :target "_blank"))
+     text]))
+
 (defn nav
   [elements]
   [:nav {:class "nav-list"}
    (->> elements
-        (map (fn [elem]
-               (if (string? elem)
-                 [:em elem]
-                 [:a {:href (second elem) :target "_blank"} (first elem)])))
+        (map (fn [elem] (if (string? elem) [:em elem] (link elem))))
         (interpose " | "))])
 
 (defn main-nav
@@ -57,16 +62,30 @@
   [:div {:class "abstract"}
    [:summary (interpose [:br] (map (fn [text] [:p text]) args))]])
 
+(defn contents
+  [body]
+  (letfn [(rec [headings] [:ul
+                           (map (fn [x] [:li
+                                         [:a {:href (str "#" (:id x))}
+                                          (:title x)] (rec (:children x))])
+                                headings)])]
+    (rec (util/contents-tree (util/filter-headings body max-contents-depth)))))
+
 (defn page
   [title intro & body]
   [:html (head title)
    [:body {:class "libertinus" :onload "set_mode()"}
-    [:h1 {:style "text-align: center;"} title dark-mode-button]
-    (main-nav title) (abstract intro) [:hr] body footer]])
+    [:h1 {:id "title" :style "text-align: center;"} title dark-mode-button]
+    (main-nav title) (abstract intro) [:hr] [:h1 "Contents"]
+    (contents (cons :body body)) [:br] [:hr] body footer]])
+
 
 ;; Html Helpers ;;
 
 (defn h
-  "Create an html heading in hiccup. [:h<rank> text]"
+  "Create an html heading in hiccup with a link to top of page if heading rank
+   is below max-contents-depth."
   [rank text]
-  [(keyword (str "h" rank)) {:id (util/text->id text)} text])
+  [(keyword (str "h" rank)) {:id (util/text->id text)} text
+   (when (<= rank max-contents-depth)
+     (list " " [:a {:href "#title" :style "font-size: 16px;"} "⇈"]))])
