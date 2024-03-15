@@ -47,10 +47,44 @@
 
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   (snip/h 1 "Personal Projects")
+   [:hr]
+   (snip/h 1 "Current Projects")
+
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   (snip/h 2 "Rusp")
+
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   (snip/h 2 "Clint")
+
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   (snip/h 2 "This Website")
 
 
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   [:hr]
+   (snip/h 1 "Older Projects")
 
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   (snip/h 2 "Interpreters, VMs, and Compilers")
+   (snip/h 3 "Scheme Interpreters")
+   (snip/h 3 "Lt-64 VM")
+   (snip/h 3 "Pascal Subset Compiler")
 
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   (snip/h 2 "Cli Tools")
+   (snip/h 3 "Easy Mark")
+   (snip/h 3 "Simple Text")
+   (snip/h 3 "Hockey Stats Viewer")
+
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   (snip/h 2 "Games and Game Engines")
+   (snip/h 3 "Disaster on the Good Ship Lethbridge")
+   (snip/h 3 "Space Match 3000")
+
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   (snip/h 2 "Scool")
+   (snip/h 3 "Competetive Programming")
+   (snip/h 3 "Rest API")
+   (snip/h 3 "Command Line Card Games")
    ;
   ))
