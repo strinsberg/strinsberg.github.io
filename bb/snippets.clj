@@ -52,6 +52,8 @@
         (map (fn [elem] (if (string? elem) [:em elem] (link elem))))
         (interpose " | "))])
 
+(defn nav-br [elements] (list [:br] (nav elements)))
+
 (defn main-nav
   [page-id]
   (nav (filter (fn [x]
@@ -101,8 +103,32 @@
    The images will link to larger versions in a new tab, if perhaps a person wants to
    see the image better."
   [& img-data]
-  [:div
+  [:div {:style "margin-top: 1em; overflow: auto;"}
    (map (fn [[path alt]] [:div {:class "proj-img"}
                           [:a {:href path :target "_blank"}
                            [:img {:alt alt :src path}]]])
         img-data)])
+
+(defn skills
+  "Make a list of skills."
+  [& skills]
+  [:p {:style "color: #555555;"} [:em skills]])
+
+(defn skills-key
+  "Make a list of skills from keywords."
+  [& skills]
+  [:p {:style "color: #555555;"}
+   [:em
+    (interpose ", "
+     (map (fn [s]
+            (-> s
+                str
+                (str/replace ":" "")
+                (str/replace "-" " ")))
+          skills))]])
+
+(defn subsec
+  []
+  (list [:br]
+        [:hr
+         {:style "height: 1px; border: none; background-color: #555555;"}]))
