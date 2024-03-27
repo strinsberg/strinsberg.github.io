@@ -1,5 +1,6 @@
-{:paths ["bb"]
+{:paths ["bb" "src"]
  :tasks
+
 
  {:requires
   ([clojure.string :as str] [babashka.process :as ps] [babashka.fs :as fs])
@@ -8,28 +9,41 @@
            (when (not (str/starts-with? (str (:name task)) "-"))
              (println (str/capitalize (:name task)) " - " (:doc task))))
 
+  clean {:doc "Remove build artifacts."
+         :task (do (fs/delete-tree "build") (fs/delete-tree "pages"))}
+
   build {:doc "Convert markdown to html and replace html placeholders."
          :task (do (run 'clean)
                    (run '-build:html)
                    (run '-build:css)
+                   (run '-build:js)
+                   (run '-build:assets)
                    (println "*** Pages Built Succesfully ***"))}
 
-  ;; Note this does not clean the pages folder, but just copies/replaces
-  ;; new or modified files. Removed src files will not be removed during build.
+  ;; NOTE that the private build targets only copy files and do not remove anything, so runnng them on their own may result in unexpected behaviour.
+
   -build:html {:doc "Compile html files and copy them to pages directory."
-               :task compile-html/-main}
+               :task (do (fs/create-dir "pages")
+                         (run! (fn [f]
+                                 (shell "bb" "-m"
+                                        "utility/compile-html"
+                                        (-> f
+                                            (str/replace ".clj" "")
+                                            (str/replace "src/" ""))))
+                               (fs/glob "src" "**.clj")))}
 
   -build:css {:doc "Copy css files to pages"
-              :task (shell "cp" "-r" "src/css" "pages/")}
+              :task (shell "cp" "-r" "css" "pages/")}
 
+  -build:js {:doc "Copy js files to pages"
+             :task (shell "cp" "-r" "js" "pages/")}
 
-  ;; Note that once this is running build-all can be called again and a page
-  ;; refresh will reflect the changes. Not exactly hot reload, but the server
-  ;; will reflect changes without having to be restarted, but obviously
-  ;; the compilation must be re-run for changes to be reflected in the pages dir.
-  serve {:doc "Build and serve"
-         :depends [build]
-         :task (shell "httplz -p 8080 pages")}
+  -build:assets {:doc "Copy asset files to pages"
+                 :task (shell "cp" "-r" "assets" "pages/")}
+
+  ;; Not hot reload, but changes from build will be reflected on page refresh.
+  serve {:doc "Serve the pages folder."
+         :task (shell "python3 -m http.server -d ./pages")}
 
   ;; This works, though I am honestly not sure if it is the best way to do it.
   ;; Note that because build and pages are not tracked by git they will be
@@ -48,7 +62,4 @@
                     (shell "git commit" "-m" "'update pages'")
                     (shell "git push")
                     (shell "git checkout" "main")
-                    (println "*** Pages Deployed Succesfully ***"))}
-
-  clean {:doc "Remove build artifacts."
-         :task (do (fs/delete-tree "build") (fs/delete-tree "pages"))}}}
+                    (println "*** Pages Deployed Succesfully ***"))}}}
