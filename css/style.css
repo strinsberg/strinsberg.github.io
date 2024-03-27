@@ -1,66 +1,29 @@
 body {
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
-.mode-button {
+.dark-mode-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
   border: 0px solid rgb(0,0,0,0);
   background-color: transparent;
-  float: right;
 }
 
-.bigger {
-  font-size: 125%;
+.nav-list {
+  width: 100%;
+  text-align: center;
 }
 
-.small {
-  font-size: 66%;
-}
-
-.goto-top {
-  text-align: right;
-}
-
-
-
-
-/* Old Stuff for Image thumbnails */
-.img-head {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  width: 30%;
-}
-
-.middle {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 100%;
-}
-
-.img-preview-col {
+.proj-img {
   float: left;
-  width: 33.33%;
-  padding: 5px;
-}
-
-.img-preview-row::after {
-  content: "";
-  clear: both;
-  display: table;
+  width: 50%;
+  padding: 1%;
 }
 
 @media screen and (max-width: 500px) {
-  .img-head {
-    width: 70%
-  }
-
-  .img-preview-col {
+  .proj-img {
     width: 100%;
-  }
-
-  .end {
-    display: none;
   }
 }
