@@ -270,6 +270,22 @@ Henrik Zetterberg      2007, 2008,"]]]
                   "https://strinsberg.github.io/space-match-3000/"]])
 
 
+   (snip/h 3 "OpenGL Graphics Project")
+   (snip/skills "C++, OpenGL, 3D, Graphics")
+
+   (snip/img-single ["/assets/screenshots/ss-graphics-project.webp"
+                     "A basic 3d hummer driving on some roads."])
+
+   [:p
+    "For a graphics class out final project was to make an OpenGL program where you could drive a hummer around on some roads. We had to produce a few different kinds of 'buildings' and make it look kind of like driving around on city blocks. I am not sure if it counts as a video game, I titled it "
+    [:em "Hummer Assault"]
+    " but there is not action. You are railroaded onto the road surfaces and the project portion where we had to make it possible to shoot down buildings was cut due to the pandemic starting with a month left in the sememster. Still it was fun and I learned a bunch of stuff about graphics. It was supposed to be a group project, but while playing around to see what could be done I ended up doing it by myself in 3 days (my group members didn't mind 😂)."]
+
+   (snip/nav-br [["GitHub"
+                  "https://github.com/strinsberg/opengl-course-project"]])
+
+
+
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
    (snip/subsec)
    (snip/h 2 "Web Development")

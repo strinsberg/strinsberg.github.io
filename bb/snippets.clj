@@ -109,6 +109,16 @@
                            [:img {:alt alt :src path}]]])
         img-data)])
 
+(defn img-single
+  "Single image that will integrate well into the flow of the page, like img-set.
+   The images will link to larger versions in a new tab, if perhaps a person wants to
+   see the image better."
+  [& img-data]
+  [:div {:style "margin-top: 1em; overflow: auto; padding: 1%;"}
+   (map (fn [[path alt]] [:a {:href path :target "_blank"}
+                          [:img {:alt alt :src path}]])
+        img-data)])
+
 (defn skills
   "Make a list of skills."
   [& skills]
