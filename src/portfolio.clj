@@ -263,7 +263,7 @@ Henrik Zetterberg      2007, 2008,"]]]
    [:p
     "Space Match 3000 is one of the first programs I wrote. It is a simple match 3 game using the Love2d game engine. It has a ridiculous UI that requires using the keyboard to navigate menus and using the mouse once the game starts. However, it is a finished program that has all the features I wanted to give it, including saving high scores if used on the desktop. I spent a lot of time experiementing with the algorithms that process a players moves and the board. I also spent some time on the architecture using the OOP state pattern to manage the different screens and game states. It was a good learning experience, especially learning how to debug when your programming language will not error when you mispell a variable name 😂."]
    [:p
-    "There is a version of the game compiled to WASM available to demo online. The link is below. Try it out and enjoy the akward controls. The high scores do not work online."]
+    "There is a version of the game compiled to WASM available to demo online. The link is below. Try it out and enjoy the akward controls. The high scores do not work online. Also, it won't work properly on mobile devices."]
 
    (snip/nav-br [["GitHub" "https://github.com/strinsberg/space-match-3000"]
                  ["Online Demo"
