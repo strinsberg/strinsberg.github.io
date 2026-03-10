@@ -18,6 +18,21 @@
    [:p
     "My experience in formal software development is somewhat limited. I worked as an electrician for many years before returning to school and changing careers. Since then, I've had three opportunities to work in a more formal environment. Most recently, I pursued my master's degree and researched using abstract syntax trees for recording programming knowledge and experience. Before that, I held two summer positions working for researchers. In one, I added new features to an educational web-based card game. In the other, I automated the collection of programming language samples for research and stored them in a simple database. Throughout these experiences, I had the pleasure of working with several great people and learning many new things."]
 
+
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+   (snip/h 2 "Analytic Labs")
+   (snip/skills-key :Python
+                    :TypeScript :React
+                    :Snowflake :Azure
+                    :LangChain :SQL)
+   [:p
+    "My first industry position after completing my Master's. I was hired as a data engineer but the role has expanded well beyond that. I have worked on a little bit of everything here, from data pipelines and Snowflake warehouse modeling to full-stack features in React and TypeScript, internal backend services and APIs, and most recently an AI-powered chat feature that allows users to query their data in natural language and generate visualizations and dashboards."]
+   [:p
+    "The data work involves building and maintaining ETL pipelines that pull from various APIs and databases into Snowflake, designing dimensional models for clients, and working closely with clients to understand their data and refine business logic. The recent AI chat work has been quite interesting. I have been researching, prototyping changes to our entity selection to improve how the system decides what data to request when answering a user's question."]
+   [:p
+    "It has been a good opportunity to work across a lot of different technologies and problem spaces in a short time, which has been both challenging and rewarding. I have also been able to see what it takes to ship and maintain software in a production environment and the tradeoffs that can be involved. I have also gotten the opportunity to work with a number of really great people who share my passions for doing high quality work and giving our customers a great product."]
+
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
    (snip/h 2 "Master's Thesis")
    (snip/skills-key :Clojure :Python
@@ -25,8 +40,7 @@
                     :Statistics :Software-engineering)
    [:p
     "I completed my M.Sc. Computer Science at the University of Lethbridge co-supervised by Dr. Jackie Rice and Dr. John Anvik. For this work, I investigated using abstract syntax trees to measure a developer's experience with a piece of code. I created five new metrics that capture how much experience a developer has with the source code they are modifying. I used statistical and machine learning methods to evaluate these metrics in the context of defect detection. The final results showed that the new metrics were a statistically significant predictor of defects at commit time."]
-   [:p
-    "Below is the abstract for my work. I am also working on adding links to the thesis, slides from my thesis defense, and the project's GitHub repository with code for data collection and my final datasets."]
+   [:p "Below is the abstract for my work and a link to the thesis."]
 
    [:div {:class "abstract"}
     [:h3 "Measuring Developer Experience with Abstract Syntax Trees"]
@@ -34,8 +48,7 @@
     [:blockquote {:style "text-align: justify;"}
      "Accurately representing a developer's programming knowledge and experience is difficult. Traditional metrics rely on counting the number of times a developer has used or made changes to pieces of code. When a developer has modified a file in the past they are less likely to introduce defects with a change. However, these metrics do not contain any general information on the structure or purpose of a piece of code and are only useful when developers work on a piece of code more than once. We investigated the use of several new metrics based on abstract syntax trees (ASTs) as a possible way to more completely measure a developer's experience. By using the ASTs of code previously modified by a developer we may be able to identify their experience with a piece of code they are modifying even if they have never modified that specific code before. Through statistical analysis and machine learning predictions we show that AST-based metrics capture a more general programming experience than count-based metrics. In their current form, AST-based metrics do not offer any significant improvements over existing metrics for defect prediction. However, our work offers a starting point for future use of ASTs for representation of knowledge and experience in defect prediction and other relevant areas."]]
 
-   (snip/nav [["Thesis" "https://hdl.handle.net/10133/6638"]
-              "GitHub Coming Soon" "Slides Coming Soon"])
+   (snip/nav [["Thesis" "https://hdl.handle.net/10133/6638"]])
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
    (snip/h 2 "Program Wars")
@@ -87,16 +100,33 @@
    [:p
     "My favourite computer science topic is programming languages and their implementations. I also enjoy working the lower level constructs of compilers and virtual machines. As a result, I have worked on quite a few different projects that fall into this category. Most of my work with interpreters and compilers is on front end tech, but I am starting to experiement more more with code generation and optimizations."]
 
-   (snip/h 3 "Rusp")
-   (snip/skills
-    "Rust, Clojure, Compiler Passes, Code Generation, Functional Programming")
+   ; (snip/h 3 "Rusp")
+   ; (snip/skills
+   ;  "Rust, Clojure, Compiler Passes, Code Generation, Functional Programming")
+
+   ; [:p
+   ;  "Rusp is an attempt to compile a Lisp-like language to Rust. The project is in the early stages. Currently my main goal for the project is to experiement and get some experience with compiler passes and code generation. I have only just started experiementing with this, but it will involve manipulating the AST in order to produce sub langauges that are closer and closer to Rust. Once the process is able to produce a structure close to common intermediate representations I will experiement applying some simple optimization passes and then generate Rust code. The final code will require a library of Rust data structures that I have already written."]
+   ; [:p
+   ;  "It would be cool if I can produce some reasonably efficient and safe Rust code. I am not expecting to produce a production ready language, but there is a lot to learn and the lessons can be applied to future projects or jobs. If I can get to the place where I can compile the compiler I will be excited."]
+
+   ; (snip/nav-br [["GitHub" "https://github.com/strinsberg/rusp"]])
+
+   (snip/h 3 "Scheme Interpreters")
+   (snip/skills "Rust, Scheme, Functional Programming")
 
    [:p
-    "Rusp is an attempt to compile a Lisp-like language to Rust. The project is in the early stages. Currently my main goal for the project is to experiement and get some experience with compiler passes and code generation. I have only just started experiementing with this, but it will involve manipulating the AST in order to produce sub langauges that are closer and closer to Rust. Once the process is able to produce a structure close to common intermediate representations I will experiement applying some simple optimization passes and then generate Rust code. The final code will require a library of Rust data structures that I have already written."]
+    "Some of the most fun I have had programming is working with lisp like langauges. One of my favorourite projects was building a Scheme interpreter in Rust. This project attempted to implement most of the R5RS standard. I did not quite get there, some math and numbers stuff is missing, there are no macros (a real problem for a lisp), and I setup the evaluation to work for continuations but never implemented them."]
    [:p
-    "It would be cool if I can produce some reasonably efficient and safe Rust code. I am not expecting to produce a production ready language, but there is a lot to learn and the lessons can be applied to future projects or jobs. If I can get to the place where I can compile the compiler I will be excited."]
+    "I did learn a lot about Scheme data structures and how I could represent them in safe Rust. I used smart pointers instead of custom allocation and garbage collection, which has problems for a dynamically typed languages with linked lists if you allow mutability and performance impacts for niave implementations when immutable. If circular structures can be created memory leaks are possible. Even without a full robust implementation I learned a lot about implementing a langauge and became much more comfortable writing Rust code."]
+   [:p
+    "A related project, and my my first introduction to Scheme, was in a programming languages class. The course project was to build a simple compiler for a subset of Scheme using Racket. It was a group project slated for the second half of the semester, but I got started on it immediately and ended up writing two different versions by myself. I was even the only student whose project passed all of the instructors tests and got 100%. Of course this is probably mostly because I spent 5x more time on the project than anyone else."]
+   [:p
+    "I now mostly use Clojure as my main lisp-like language, but Scheme is a great language."]
 
-   (snip/nav-br [["GitHub" "https://github.com/strinsberg/rusp"]])
+   (snip/nav-br [["My-Scheme GitHub" "https://github.com/strinsberg/my-scheme"]
+                 "Online Demo Coming Soon"
+                 ["School Project GitHub"
+                  "https://github.com/strinsberg/scheme-interpreter"]])
 
 
    (snip/h 3 "Lt-64 VM")
@@ -128,27 +158,13 @@
       "http://pascal.hansotten.com/2020/10/23/per-brinch-hansen-on-pascal-compilers/"]])
 
 
-   (snip/h 3 "Scheme Interpreters")
-   (snip/skills "Rust, Scheme, Functional Programming")
+   ; (snip/h 3 "Vrrm")
+   ; (snip/skills "Rust, Stack-Based VM")
 
-   [:p
-    "It may be obvious from some of the entries above, but I really enjoy Lisp like languages. My first introduction was to Scheme in a programming languages class where the course project was to build a simple compiler for a subset of Scheme using Racket. It was a group project slated for the second half of the semester, but I got started on it immediately and ended up writing two different versions by myself. I was even the only student whose project passed all of the instructors tests and got 100%. Of course this is to be expected when you spend 5x more time on the project than anyone else. I now mostly use Clojure as my main lisp-like language, but Scheme is still a nice language."]
-   [:p
-    "More recently, before moving on to Rusp, I built a Scheme interpreter in Rust as well. This project attempted to implement most of the R5RS standard. I did not quite get there, some math and numbers stuff is missing, there are no macros (a real problem for a lisp), and I setup the evaluation to work for continuations but never implemented them. A big reason I did not finish this was because I wanted to compile it and took the experience and moved on to Rusp. I did learn a lot about Rusp data structures and how I could represent Scheme structures in Rust. I used smart pointers instead of custom allocation and garbage collection, which has problems for a dynamically types language if you allow mutability. It is not always possible to identify circular structures in an efficent way to use weak pointer. So memory leaks are not hard to cause. As always I learned a lot and got much more comfortable writing Rust code."]
+   ; [:p
+   ;  "This was another attempt at a virtual machine after lt64. My main goal was to simplify the memory model and try to add some heap memory with garbage collection. I tried to separate the program data from the stacks and to incorporate a separate data structure for dynamic memory. I got pretty far along and was successful in some ways. The issue with the setup was that once the memory is split up, if pointers are indicies for memory instead of raw pointers you have to encode where each pointer points to. It is not hard to do that when you are directly writing the byte code, but it takes more work to get right when generating code from another language. I also used an interface for the heap and started implementing something niave and it just didn't feel like it was going to work out. Like other projects, it was a good learning experience to force me to think more about the difficulties of writing a generic VM. I may write another VM in the future, but I think I will try to make it less general and more targeted to a specific language to make it easier to decide what features should be available in the VM versus the language."]
 
-   (snip/nav-br [["My-Scheme GitHub" "https://github.com/strinsberg/my-scheme"]
-                 "Online Demo Coming Soon"
-                 ["School Project GitHub"
-                  "https://github.com/strinsberg/scheme-interpreter"]])
-
-
-   (snip/h 3 "Vrrm")
-   (snip/skills "Rust, Stack-Based VM")
-
-   [:p
-    "This was another attempt at a virtual machine after lt64. My main goal was to simplify the memory model and try to add some heap memory with garbage collection. I tried to separate the program data from the stacks and to incorporate a separate data structure for dynamic memory. I got pretty far along and was successful in some ways. The issue with the setup was that once the memory is split up, if pointers are indicies for memory instead of raw pointers you have to encode where each pointer points to. It is not hard to do that when you are directly writing the byte code, but it takes more work to get right when generating code from another language. I also used an interface for the heap and started implementing something niave and it just didn't feel like it was going to work out. Like other projects, it was a good learning experience to force me to think more about the difficulties of writing a generic VM. I may write another VM in the future, but I think I will try to make it less general and more targeted to a specific language to make it easier to decide what features should be available in the VM versus the language."]
-
-   (snip/nav-br [["GitHub" "https://github.com/strinsberg/vrrm"]])
+   ; (snip/nav-br [["GitHub" "https://github.com/strinsberg/vrrm"]])
 
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
