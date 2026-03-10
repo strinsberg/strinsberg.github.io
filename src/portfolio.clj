@@ -8,15 +8,15 @@
    "Steven's Portfolio"
 
    ;; Intro ;;
-   ["Below is a collection of my work and personal projects. In addition to finishing a bachelor's and master's degree in computer science, I have put thousands of hours into personal projects and learning over the years. You can find a little bit of everything here, including interpreters, compilers, software engineering research, and a video game or two. While my research and work experience have more practical value, I worked on most of my personal projects to learn something new and have fun. The value of these projects lies in what the process taught me about the different technologies, the many approaches to problem-solving, and what it takes to design and build software."
+   ["Below is a collection of my work and personal projects. In addition to finishing a bachelor's and master's degree in computer science, I have put thousands of hours into personal projects and learning over the years. You can find a little bit of everything here, including interpreters, compilers, software engineering research, and a video game or two. Through all of my experience, for work, school, or fun, building these things taught me about how to solve problems and think critically about what it takes to design and build software."
 
-    "I have tried to keep the descriptions short. Some projects have much more detail on GitHub and others are included as examples of work, but lack comprehensive documentation given they were primarily for experiementation. There are links to each project on GitHub and to other resources where applicable. Some projects include screenshots. You can click on them to view larger versions in another tab."]
+    "There are short descriptions for each project. Some have much more detail on GitHub. Others others are included as examples of my interests and experiments, but lack comprehensive documentation. There are links to each project on GitHub and to other resources where applicable. Some projects include screenshots. You can click on them to view larger versions in another tab."]
 
 
    ;; Body ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
    (snip/h 1 "Work Experience")
    [:p
-    "My experience in formal software development is somewhat limited. I worked as an electrician for many years before returning to school and changing careers. Since then, I've had three opportunities to work in a more formal environment. Most recently, I pursued my master's degree and researched using abstract syntax trees for recording programming knowledge and experience. Before that, I held two summer positions working for researchers. In one, I added new features to an educational web-based card game. In the other, I automated the collection of programming language samples for research and stored them in a simple database. Throughout these experiences, I had the pleasure of working with several great people and learning many new things."]
+    "My work experience spans industry software and data engineering, academic research, and university summer positions. The entries below cover my current role at Analytic Labs, two research assistant positions, and my Master's thesis work. Throughout these experiences I have had the pleasure of working with great people across a range of interesting problems domains."]
 
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

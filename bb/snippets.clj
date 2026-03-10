@@ -26,7 +26,7 @@
     {:src "/js/cljs/page-functions.cljs" :type "application/x-scittle"}]])
 
 (def footer
-  [:div [:br] [:hr] "© Steven Deutekom 2023" [:br] "Styled with "
+  [:div [:br] [:hr] "© Steven Deutekom 2026" [:br] "Styled with "
    [:a {:href "https://latex.now.sh"} "latex.css"]])
 
 (def dark-mode-button
